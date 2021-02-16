@@ -9,29 +9,45 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play CS4700.</tw-noscript></noscript></tw-story>
-<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="" position="474,398" size="100,100">|body&gt;[
+<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="" position="294,400" size="100,100">|body&gt;[
 Time: $time
 What will you do?
-[[leetcode-&gt;early morning leetcode]]
+[[leetcode-&gt;leetcode]]
 [[roommate-&gt;engage with roommate]]
 [[work-&gt;go to work]]
 [[kill time-&gt;kill time]]
-[[exercise-&gt;morning exercise]]
+[[exercise-&gt;exercise]]
 ]
 
-(if: ($time%11) is 3)[
+(if: ($time%11) is 1)[
 	(replace: ?body)[
 		[[Go to school-&gt;Morning at School]]
 	]
-]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="700,400" size="100,100">At school.</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="1282,404" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1449,402" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="" position="1630,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="458,671" size="100,100">[[Back-&gt;Morning Before School]]
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="morning exercise" tags="" position="652,666" size="100,100">[[Back-&gt;Morning Before School]]
+]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="757,396" size="100,100">|body&gt;[
+Time: $time
+What will you do?
+[[leetcode-&gt;leetcode]]
+[[exercise-&gt;exercise]]
+]
+
+(if: ($time%11) is 4)[
+	(replace: ?body)[
+		[[U-Hour-&gt;U-Hour]]
+	]
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="1100,400" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1449,402" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="" position="1630,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="212,675" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="" position="725,669" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="253,631" size="100,100">[[Back-&gt;Morning Before School]]
+(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="40,640" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $money to $money+2)</tw-passagedata><tw-passagedata pid="9" name="early morning leetcode" tags="" position="261,177" size="100,100">[[Back-&gt;Morning Before School]]
+(set: $money to $money+2)</tw-passagedata><tw-passagedata pid="9" name="leetcode" tags="" position="731,150" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="577,175" size="100,100">[[Back-&gt;Morning Before School]]
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="188,393" size="100,100">(set: $time to 0)
+(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="245,184" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="31,401" size="100,100">(set: $time to 0)
 (set: $leetcode to 0)
 (set: $health to 0)
 (set: $simp to 0)
