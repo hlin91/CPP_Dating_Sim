@@ -45,9 +45,10 @@ Time: $time
 It is still the morning of $weekday, but now you&#39;re at the Bronco Student Center. What would you like to do?
 [[leetcode-&gt;leetcode]]
 [[exercise-&gt;exercise]]
-[[dine with jane doe-&gt;jane doe]]
+[[dine with jane doe-&gt;dining hall]]
 [[game dev-&gt;game dev class]]
 [[library-&gt;library]]
+[[go to work-&gt;go to work]]
 ]
 
 (if: ($time%11) is 4)[
@@ -55,11 +56,18 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
 	]
-]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="899,534" size="100,100">|body&gt;[
-	U-Hour is your favorite part of the day. Weird stuff always happens during U-Hour. What would you like to do?
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="900,533" size="100,100">|body&gt;[
+
+It&#39;s now U-Hour!
+
+(if: $weekday is &quot;Monday&quot; or $weekday is &quot;Wednesday&quot; or $weekday is &quot;Friday&quot;)[
+You don&#39;t remember there being U-Hour on $weekday, but you brush off that fact.
+]
+
+U-Hour is your favorite part of the day. Weird stuff always happens during U-Hour. What would you like to do?
 	[[Go to pop-up bookstore -&gt;popup book store]]
 	[[Do some LeetCode -&gt;leetcode]] 
-	[[Chat up Jane Doe -&gt;jane doe]] 
+	[[Chat up Jane Doe -&gt;dining hall]] 
 	(if: ($weekday is &quot;Tuesday&quot; or $weekday is &quot;Thursday&quot;))[
 		[[Go to club meeting -&gt;club meeting]]
 	]
@@ -75,7 +83,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 	Time: $time
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
-  	[[dine with jane doe-&gt;jane doe]]
+  	[[dine with jane doe-&gt;dining hall]]
   	[[game dev-&gt;game dev class]]
   	[[library-&gt;library]]
 ]
@@ -90,7 +98,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
   	[[leetcode-&gt;leetcode]]
 	[[exercise-&gt;exercise]]
  	[[library-&gt;library]]
-  	[[hit up jane doe-&gt;jane doe]]
+  	[[hit up jane doe-&gt;dining hall]]
   	[[cla building-&gt;cla building]]
 ]
 
@@ -109,6 +117,13 @@ You grab your towel and head to the BRIC. You leave your personal belongings in 
 
 +2 HEALTH
 
+(if: $inv contains &quot;ss&quot;)[
+The acquired knowledge from Starting Strength makes your time in the gym even more effective!
+
++1 HEALTH
+(set: $health to $health + 1)
+]
+
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Incredible gains!&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
@@ -116,7 +131,15 @@ You grab your towel and head to the BRIC. You leave your personal belongings in 
 
 //TODO Some randomly chosen flavor text that describes some kind of odd jobs?
 
-You gain 2 MONEY
+MONEY +2
+
+(if: $inv contains &quot;htwfaip&quot;)
+[
+You are so great at Winning Friends and Influencing People that your boss gives you more money! Wow! That can&#39;t be legal!
+
+MONEY +1
+(set: $money to $money + 1)
+]
 
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Here comes the money&quot;, (history:)&#39;s ($histIndex))
@@ -126,18 +149,34 @@ You gain 2 MONEY
 
 Alan Turing, from beyond the grave, sheds a single tear as you spend the better part of an hour (print: ($leetcode_verb&#39;s (_verb_choice))) a (print: ($leetcode_noun&#39;s (_noun_choice)))
 
+LEETCODE +2
+
+(if: $inv contains &quot;ec++&quot;)
+[
+Your C++ is so Effective thanks to Effective C++ that your LeetCode solutions routinely run faster than the other submissions. Go you!
+
+LEETCODE +1
+(set: $leetcode to $leetcode+1)
+]
+
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;The grind never ends&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
 (set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="199,200" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="100,401" size="100,100">(set: $time to 0)
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="94,396" size="100,100">(set: $time to 0)
 (set: $leetcode to 0)
 (set: $health to 0)
 (set: $simp to 0)
 (set: $money to 0)
 (set: $school to 0)
 (set: $weekday to &quot;Monday&quot;)
+
+(set: $inv to
+	(a:
+	
+	)
+)
 
 (set: $leetcode_verb to
 	(a:
@@ -188,7 +227,59 @@ Alan Turing, from beyond the grave, sheds a single tear as you spend the better 
 	)
 )
 	
-[[Time to play!-&gt;Morning Before School]]</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="802,400" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="999,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="jane doe" tags="" position="901,725" size="100,100">TODO: To simp or not to simp
+[[Time to play!-&gt;Morning Before School]]</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
+You take some time out of the day to go to CPP&#39;s famous popup book store. It&#39;s right outside the Bronco Student Center.
+]
+(else:)[
+You return to the popup book store.
+]
+
+There stands a man dressed like some kind of horrible goblin. Clearly, he has no sense of color theory, given by his terrible choice of clothing color.
+
+&quot;Starting Strength, Effective C++, a vial of silicon! You want it? It&#39;s yours my friend! So long as you have enough MONEY.&quot;
+
+MONEY: $money
+
+(unless: $inv contains &quot;ss&quot;)[
+Pick up Starting Strength\
+(click:&quot;Pick up Starting Strength&quot;)
+[
+It&#39;s Starting Strength, a primer on exercise. You get the feeling that this book will improve your results at the BRIC.
+Cost: 4 MONEY
+[[BUY -&gt; buy starting strength]]
+]\
+]
+\
+(unless: $inv contains &quot;ec++&quot;)[
+Pick up Effective C++\
+(click:&quot;Pick up Effective C++&quot;)
+[
+It&#39;s Effectice C++, a comprehensive guide to writing professional C++. You get the feeling that this book will improve your results from LeetCode.
+Cost: 4 MONEY
+[[BUY-&gt;buy effective c++]]
+]\
+]
+\
+(unless: $inv contains &quot;htwfaip&quot;)[
+Pick up How to Win Friends and Influence People\
+(click:&quot;Pick up How to Win Friends and Influence People&quot;)[
+It&#39;s How to Win Friends and Influence People, a book on how to win friends and influence people. You get the feeling that this book will help you win friends and influence people (and also make you more money at work).
+COST: 4 MONEY
+[[BUY-&gt;buy htwfaip]]
+]\
+]
+\
+(unless: $inv contains &quot;silicon&quot;)[
+Pick up vial of silicon\
+(click:&quot;Pick up vial of silicon&quot;)
+[
+It&#39;s a vial of silicon. You feel magical energy radiating off of it. You get the feeling that there is more to this than meets the eye.
+COST: 8 MONEY
+[[BUY-&gt;buy silicon]]
+]\
+]
+
+[[Back -&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="999,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="" position="901,725" size="100,100">TODO: To simp or not to simp
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1083" size="100,100">Summarize and other stuff maybe?
@@ -201,7 +292,55 @@ Alan Turing, from beyond the grave, sheds a single tear as you spend the better 
 (set: $leetcode to $leetcode+1)
 (set: $school to $school+1)</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="" position="1899,700" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata></tw-storydata>
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="" position="710,1434" size="100,100">(if: $money &gt;= 4)[
+You purchase Starting Strength
+(set: $inv to $inv + (a: &quot;ss&quot;))
+[[Sweet.-&gt;book store vanishes]]
+]
+(else:)
+[
+A voice booms from another direction.
+
+&quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
+[[Can do, strange man-&gt;popup book store]]
+]</tw-passagedata><tw-passagedata pid="20" name="buy effective c++" tags="" position="714,1314" size="100,100">(if: $money &gt;= 4)[
+
+You purchase Effective C\+\+
+(set: $inv to $inv + (a: &quot;ec++&quot;))
+[[Sweet.-&gt;book store vanishes]]
+]
+(else:)
+[
+A voice booms from another direction.
+
+&quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
+[[Can do, strange man-&gt;popup book store]]
+]</tw-passagedata><tw-passagedata pid="21" name="buy htwfaip" tags="" position="718,1204" size="100,100">(if: $money &gt;= 4)[
+You purchase How to Win Friends and Influence People
+(set: $inv to $inv + (a: &quot;htwfaip&quot;))
+[[Sweet.-&gt;book store vanishes]]
+]
+(else:)
+[
+A voice booms from another direction.
+
+&quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
+[[Can do, strange man-&gt;popup book store]]
+]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="" position="711,1070" size="100,100">(if: $money &gt;= 8)[
+You purchase the vial of silicon. Maybe someone at the Society of Computer Science can help you make sense of it?
+(set: $inv to $inv + (a: &quot;silicon&quot;))
+[[Sweet.-&gt;book store vanishes]]
+]
+(else:)
+[
+A voice booms from another direction.
+
+&quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
+[[Can do, strange man-&gt;popup book store]]
+]</tw-passagedata><tw-passagedata pid="23" name="book store vanishes" tags="" position="828,1230" size="100,100">You make your purchase and place it into your backpack. When you look back up, the book store has vanished. You get the feeling that it will be back tomorrow, if there is a tomorrow.
+
+(set:$time to $time + 1)
+[[Sounds about right-&gt;U-Hour]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
