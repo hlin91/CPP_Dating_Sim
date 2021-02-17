@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play CS4700.</tw-noscript></noscript></tw-story>
-<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="" position="294,398" size="100,100">(if: ($time/11 is 0))[
+<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="" position="300,499" size="100,100">(if: ($time/11 is 0))[
 	(set: $weekday to &quot;Monday&quot;)
 ]
 (else-if: ($time/11 is 1))[
@@ -40,11 +40,14 @@ Today is $weekday, and you&#39;ve got some time to kill before class. What would
 		Seems like that&#39;s all you&#39;ve got time for today. Time to get a move on!
 		[[Go to school-&gt;Morning at School]]
 	]
-]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="758,396" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="601,501" size="100,100">|body&gt;[
 Time: $time
 It is still the morning of $weekday, but now you&#39;re at the Bronco Student Center. What would you like to do?
 [[leetcode-&gt;leetcode]]
 [[exercise-&gt;exercise]]
+[[dine with jane doe-&gt;jane doe]]
+[[game dev-&gt;game dev class]]
+[[library-&gt;library]]
 ]
 
 (if: ($time%11) is 4)[
@@ -52,10 +55,11 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
 	]
-]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="1100,400" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="899,534" size="100,100">|body&gt;[
 	U-Hour is your favorite part of the day. Weird stuff always happens during U-Hour. What would you like to do?
 	[[Go to pop-up bookstore -&gt;popup book store]]
 	[[Do some LeetCode -&gt;leetcode]] 
+	[[Chat up Jane Doe -&gt;jane doe]] 
 	(if: ($weekday is &quot;Tuesday&quot; or $weekday is &quot;Thursday&quot;))[
 		[[Go to club meeting -&gt;club meeting]]
 	]
@@ -67,10 +71,38 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1449,402" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="" position="1630,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="212,675" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site. You estimate that an hour has passed.
+]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1399,499" size="100,100">|body&gt;[
+	Time: $time
+  	[[leetcode-&gt;leetcode]]
+  	[[exercise-&gt;exercise]]
+  	[[dine with jane doe-&gt;jane doe]]
+  	[[game dev-&gt;game dev class]]
+  	[[library-&gt;library]]
+]
+
+
+(if: ($time%11) is 8)[
+	(replace: ?body)[
+		[[evening-&gt;Evening on Campus]]
+	]
+]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="" position="1900,500" size="100,100">|body&gt;[
+	Time: $time
+  	[[leetcode-&gt;leetcode]]
+	[[exercise-&gt;exercise]]
+ 	[[library-&gt;library]]
+  	[[hit up jane doe-&gt;jane doe]]
+  	[[cla building-&gt;cla building]]
+]
+
+
+(if: ($time%11) is 0)[
+	(replace: ?body)[
+		[[go to bed-&gt;sleep]]
+	]
+]</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="298,700" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Welp, that&#39;s that.&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="" position="723,670" size="100,100">(set: _noun_choice to (random: 1, $exercise_noun&#39;s length))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="" position="701,0" size="100,100">(set: _noun_choice to (random: 1, $exercise_noun&#39;s length))
 (set: _verb_choice to (random: 1, $exercise_verb&#39;s length))
 
 You grab your towel and head to the BRIC. You leave your personal belongings in the locker room and spend the better part of an hour (print: ($exercise_verb&#39;s (_verb_choice))) a (print: ($exercise_noun&#39;s (_noun_choice)))
@@ -80,7 +112,7 @@ You grab your towel and head to the BRIC. You leave your personal belongings in 
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Incredible gains!&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="40,640" size="100,100">You spend some time working.
+(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="97,600" size="100,100">You spend some time working.
 
 //TODO Some randomly chosen flavor text that describes some kind of odd jobs?
 
@@ -89,7 +121,7 @@ You gain 2 MONEY
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Here comes the money&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $money to $money+2)</tw-passagedata><tw-passagedata pid="9" name="leetcode" tags="" position="730,150" size="100,100">(set: _noun_choice to (random: 1, $leetcode_noun&#39;s length))
+(set: $money to $money+2)</tw-passagedata><tw-passagedata pid="9" name="leetcode" tags="" position="900,0" size="100,100">(set: _noun_choice to (random: 1, $leetcode_noun&#39;s length))
 (set: _verb_choice to (random: 1, $leetcode_verb&#39;s length))
 
 Alan Turing, from beyond the grave, sheds a single tear as you spend the better part of an hour (print: ($leetcode_verb&#39;s (_verb_choice))) a (print: ($leetcode_noun&#39;s (_noun_choice)))
@@ -97,9 +129,9 @@ Alan Turing, from beyond the grave, sheds a single tear as you spend the better 
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;The grind never ends&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="245,184" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="199,200" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="40,398" size="100,100">(set: $time to 11)
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="100,401" size="100,100">(set: $time to 0)
 (set: $leetcode to 0)
 (set: $health to 0)
 (set: $simp to 0)
@@ -156,7 +188,20 @@ Alan Turing, from beyond the grave, sheds a single tear as you spend the better 
 	)
 )
 	
-[[Time to play!-&gt;Morning Before School]]</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="905,472" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="1133,228" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Time to play!-&gt;Morning Before School]]</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="802,400" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="999,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="jane doe" tags="" position="901,725" size="100,100">TODO: To simp or not to simp
+(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1083" size="100,100">Summarize and other stuff maybe?
+[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="901,894" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)
+(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="" position="1101,0" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)
+(set: $leetcode to $leetcode+1)
+(set: $school to $school+1)</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="" position="1899,700" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
