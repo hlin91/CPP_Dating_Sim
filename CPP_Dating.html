@@ -46,7 +46,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 [[leetcode-&gt;leetcode]]
 [[exercise-&gt;exercise]]
 [[dine with jane doe-&gt;dining hall]]
-[[game dev-&gt;game dev class]]
+(unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
 [[library-&gt;library]]
 [[go to work-&gt;go to work]]
 ]
@@ -69,7 +69,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 	[[Do some LeetCode -&gt;leetcode]] 
 	[[Chat up Jane Doe -&gt;dining hall]] 
 	(if: ($weekday is &quot;Tuesday&quot; or $weekday is &quot;Thursday&quot;))[
-		[[Go to club meeting -&gt;club meeting]]
+		[[Go to the Society of Computer Science-&gt;club meeting]]
 	]
 ]
 
@@ -79,12 +79,12 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1399,499" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1448,494" size="100,100">|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
   	[[dine with jane doe-&gt;dining hall]]
-  	[[game dev-&gt;game dev class]]
+	(unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
   	[[library-&gt;library]]
 ]
 
@@ -107,7 +107,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 	(replace: ?body)[
 		[[go to bed-&gt;sleep]]
 	]
-]</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="298,700" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
+]</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="298,701" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Welp, that&#39;s that.&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="" position="701,0" size="100,100">(set: _noun_choice to (random: 1, $exercise_noun&#39;s length))
@@ -127,9 +127,10 @@ The acquired knowledge from Starting Strength makes your time in the gym even mo
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Incredible gains!&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="97,600" size="100,100">You spend some time working.
-
-//TODO Some randomly chosen flavor text that describes some kind of odd jobs?
+(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="97,600" size="100,100">(set: _noun_choice to (random: 1, $work_noun&#39;s length))
+(set: _verb_choice to (random: 1, $work_verb&#39;s length))
+(set: _skill_choice to (random: 1, $work_skill&#39;s length))
+You go to your student job with the administration, where you develop your (print: ($work_skill&#39;s (_skill_choice))) by (print: ($work_verb&#39;s (_verb_choice))) a way to (print: ($work_noun&#39;s (_noun_choice))).
 
 MONEY +2
 
@@ -164,13 +165,23 @@ LEETCODE +1
 (set: $time to $time+1)
 (set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="199,200" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="94,396" size="100,100">(set: $time to 0)
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="94,396" size="100,100">
+
+[[Time to play!-&gt;Morning Before School]]
+
+(set: $time to 0)
 (set: $leetcode to 0)
 (set: $health to 0)
 (set: $simp to 0)
 (set: $money to 0)
 (set: $school to 0)
 (set: $weekday to &quot;Monday&quot;)
+(set: $gd_correct to 0)
+(set: $gd_attendance to
+	(a:
+	
+	)
+)
 
 (set: $inv to
 	(a:
@@ -226,8 +237,47 @@ LEETCODE +1
 		&quot;climbing wall&quot;,
 	)
 )
-	
-[[Time to play!-&gt;Morning Before School]]</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
+
+(set: $work_verb to
+	(a:
+		&quot;orchestrating&quot;,
+		&quot;coordinating&quot;,
+		&quot;planning&quot;,
+		&quot;overseeing&quot;,
+		&quot;devising&quot;,
+		&quot;implementing&quot;,
+		&quot;designing&quot;,
+		&quot;pioneering&quot;,
+		&quot;initiating&quot;,
+		&quot;improving&quot;
+	)
+)
+
+(set: $work_noun to
+	(a:
+		&quot;help computer science majors make friends&quot;,
+		&quot;make the school more attractive to Pepsi Co.&quot;,
+		&quot;make weekends at CPP less dead&quot;,
+		&quot;reduce the amount of math courses computer science students have to take&quot;,
+		&quot;increase the number of llamas on campus&quot;,
+		&quot;make the school more attractive than SLO&quot;,
+		&quot;decrease the amount of parking available on campus&quot;
+	)
+)
+
+(set: $work_skill to
+	(a:
+		&quot;adaptability&quot;,
+		&quot;communication&quot;,
+		&quot;creative thinking&quot;,
+		&quot;positivity&quot;,
+		&quot;time management&quot;,
+		&quot;motivation&quot;,
+		&quot;problem-solving&quot;,
+		&quot;critical thinking&quot;,
+		&quot;conflict resolution&quot;
+	)
+)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
 You take some time out of the day to go to CPP&#39;s famous popup book store. It&#39;s right outside the Bronco Student Center.
 ]
 (else:)[
@@ -269,21 +319,73 @@ COST: 4 MONEY
 ]\
 ]
 \
-(unless: $inv contains &quot;silicon&quot;)[
-Pick up vial of silicon\
-(click:&quot;Pick up vial of silicon&quot;)
+(unless: $inv contains &quot;silicon&quot; or $inv contains &quot;key&quot;)[
+Pick up hunk of silicon\
+(click:&quot;Pick up hunk of silicon&quot;)
 [
-It&#39;s a vial of silicon. You feel magical energy radiating off of it. You get the feeling that there is more to this than meets the eye.
-COST: 8 MONEY
+It&#39;s a hunk of silicon. You feel magical energy radiating off of it. You get the feeling that there is more to this than meets the eye.
+COST: 4 MONEY
 [[BUY-&gt;buy silicon]]
 ]\
 ]
 
-[[Back -&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="999,399" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="" position="901,725" size="100,100">TODO: To simp or not to simp
+[[Back -&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="1025,414" size="100,100">You enter a dimly lit classroom in the College of Science main building. Inside, you see dozens of figures clad in black robes with what looks a motherboard in the center of the room, and a pentagram under that. Your incredulity is interupted by one of the hooded figures approaching you.
+
+&quot;Speak, for thy servant heareth&quot; whispers the hooded figure.
+
+(if: $inv contains &quot;silicon&quot;)[
+[[Show the silicon-&gt;silicon transformed]]
+]
+
+[[Ask for a blessing-&gt;blessing]]
+[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="" position="901,725" size="100,100">TODO: To simp or not to simp
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1083" size="100,100">Summarize and other stuff maybe?
-[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="901,894" size="100,100">(set: $histIndex to (history:)&#39;s length)
+[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
+You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
+]
+(set: $gd_attendance to ($gd_attendance + (a: $weekday)))
+
+In game dev, you take your seat and wait for class to begin. Dr. Winterville bursts in through the door and gives you a question:
+
+(if: $gd_attendance&#39;s length is 1)
+[
+Question 1
+
+[[Correct answer-&gt;correct]]
+[[Incorrect answer-&gt;incorrect]]
+]
+(if: $gd_attendance&#39;s length is 2)
+[
+Question 2
+
+[[Correct answer-&gt;correct]]
+[[Incorrect answer-&gt;incorrect]]
+]
+(if: $gd_attendance&#39;s length is 3)
+[
+Question 3
+
+[[Correct answer-&gt;correct]]
+[[Incorrect answer-&gt;incorrect]]
+]
+(if: $gd_attendance&#39;s length is 4)
+[
+Question 4
+
+[[Correct answer-&gt;correct]]
+[[Incorrect answer-&gt;incorrect]]
+]
+(if: $gd_attendance&#39;s length is 5)
+[
+Question 5
+
+[[Correct answer-&gt;correct]]
+[[Incorrect answer-&gt;incorrect]]
+]
+
+(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
 (set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="" position="1101,0" size="100,100">(set: $histIndex to (history:)&#39;s length)
@@ -326,8 +428,8 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="" position="711,1070" size="100,100">(if: $money &gt;= 8)[
-You purchase the vial of silicon. Maybe someone at the Society of Computer Science can help you make sense of it?
+]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="" position="711,1071" size="100,100">(if: $money &gt;= 4)[
+You purchase the hunk of silicon. Maybe someone at the Society of Computer Science can help you make sense of it? They meet on Tuesdays and Thursdays at U-Hour, when the Computer Science energy is strongest.
 (set: $inv to $inv + (a: &quot;silicon&quot;))
 [[Sweet.-&gt;book store vanishes]]
 ]
@@ -340,7 +442,53 @@ A voice booms from another direction.
 ]</tw-passagedata><tw-passagedata pid="23" name="book store vanishes" tags="" position="828,1230" size="100,100">You make your purchase and place it into your backpack. When you look back up, the book store has vanished. You get the feeling that it will be back tomorrow, if there is a tomorrow.
 
 (set:$time to $time + 1)
-[[Sounds about right-&gt;U-Hour]] </tw-passagedata></tw-storydata>
+[[Sounds about right-&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="24" name="silicon transformed" tags="" position="852,292" size="100,100">You show the hooded figure the silicon. The figure nods knowingly, before chanting rhythmically.
+
+&quot;In the name of our Lord Linus Torvalds, let this silicon shew forth its true form!&quot;
+
+You look back down at the hunk of silicon to find now it has been transformed into a key.
+
+(set: $inv to $inv - (a: &quot;silicon&quot;))
+(set: $inv to $inv + (a: &quot;key&quot;))
+
+&quot;The U-Hour is nearly up, and our powers are waning. Outsider, you must leave for now.&quot;
+
+(set: $time to $time + 1)
+[[Man, this school is weird-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="25" name="blessing" tags="" position="968,251" size="100,100">The hooded figure removes his hood and stares into your soul. You feel something unlock within you, and you now know the solution to that one LeetCode problem you were stuck on yesterday.
+
+LEETCODE +4
+(set: $leetcode to $leetcode + 4)
+
+(set: $time to $time + 1)
+[[Thank you wizard!-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="26" name="scs explanation" tags="" position="1117,255" size="100,100">You ask the robed figure who they are, and what is going on here.
+
+&quot;We are adherents to the old ways, set forth by our Lord Linus Torvalds. We meet here every U-Hour, when the Computer Science energy is strongest, in order to make sacrifices for the atonement of cardinal sins of Computer Science.&quot;
+
+[[Neat-&gt;club meeting]]
+[[What kinds of sins?-&gt;scs sins]]</tw-passagedata><tw-passagedata pid="27" name="scs sins" tags="" position="1184,410" size="100,100">You are directed to a big stone tablet that is etched with text.
+
+&#39;&#39;COMPUTER SCIENCE COMMANDMENTS&#39;&#39;
+//0. Thou shalt start thine indexing at 0
+I. Thou shalt comment thy code as thy go
+II. Thou shalt prioritize time complexity in thine codings
+III. Thou shalt test thine code as thou shalt go
+//
+The remaining commandments are hard to understand, and the comments explaining them are unhelpful.
+
+[[Thank you robed figure, very cool!-&gt;club meeting]]</tw-passagedata><tw-passagedata pid="28" name="correct" tags="" position="1113,964" size="100,100">Dr. Winterville&#39;s mouth upturns as his eyes begin to water. He sniffles, wipes his eyes, and smiles broadly at the class.
+
+&quot;That&#39;s correct! I&#39;m so glad you&#39;ve been paying attention in class.&quot;
+
+(set: $gd_correct to $gd_correct + 1)
+(set: $histIndex to (history:)&#39;s length - 1)
+(link-goto: &quot;I&#39;ll be a game developer yet!&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
+
+&quot;No, I&#39;m sorry. That is not the correct answer.&quot;
+
+(set: $histIndex to (history:)&#39;s length -1)
+(link-goto: &quot;Better luck tomorrow!&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
