@@ -9,7 +9,22 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play CS4700.</tw-noscript></noscript></tw-story>
-<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="" position="300,499" size="100,100">(if: ($time/11 is 0))[
+<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="dorm"] {
+  background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/dorm.png");
+  background-size: cover;
+}
+tw-story[tags~="campus"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/campus.png");
+  background-size: cover;
+}
+tw-story[tags~="store"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/store.png");
+  background-size: cover;
+}
+
+body, tw-story {
+  color: orange;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="dorm" position="300,499" size="100,100">(if: ($time/11 is 0))[
 	(set: $weekday to &quot;Monday&quot;)
 ]
 (else-if: ($time/11 is 1))[
@@ -40,7 +55,7 @@ Today is $weekday, and you&#39;ve got some time to kill before class. What would
 		Seems like that&#39;s all you&#39;ve got time for today. Time to get a move on!
 		[[Go to school-&gt;Morning at School]]
 	]
-]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="601,501" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="campus" position="601,501" size="100,100">|body&gt;[
 Time: $time
 It is still the morning of $weekday, but now you&#39;re at the Bronco Student Center. What would you like to do?
 [[leetcode-&gt;leetcode]]
@@ -56,7 +71,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
 	]
-]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="900,533" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="campus" position="900,533" size="100,100">|body&gt;[
 
 It&#39;s now U-Hour!
 
@@ -79,7 +94,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1448,494" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="campus" position="1448,494" size="100,100">|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
@@ -277,7 +292,7 @@ LEETCODE +1
 		&quot;critical thinking&quot;,
 		&quot;conflict resolution&quot;
 	)
-)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
+)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="store" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
 You take some time out of the day to go to CPP&#39;s famous popup book store. It&#39;s right outside the Bronco Student Center.
 ]
 (else:)[
