@@ -40,12 +40,12 @@ Today is $weekday, and you&#39;ve got some time to kill before class. What would
 		Seems like that&#39;s all you&#39;ve got time for today. Time to get a move on!
 		[[Go to school-&gt;Morning at School]]
 	]
-]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="601,501" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="605,501" size="100,100">|body&gt;[
 Time: $time
 It is still the morning of $weekday, but now you&#39;re at the Bronco Student Center. What would you like to do?
 [[leetcode-&gt;leetcode]]
 [[exercise-&gt;exercise]]
-[[dine with jane doe-&gt;dining hall]]
+[[dine with jane doe-&gt;dining hall intro]]
 (unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
 [[library-&gt;library]]
 [[go to work-&gt;go to work]]
@@ -56,7 +56,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
 	]
-]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="900,533" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="858,493" size="100,100">|body&gt;[
 
 It&#39;s now U-Hour!
 
@@ -67,7 +67,7 @@ You don&#39;t remember there being U-Hour on $weekday, but you brush off that fa
 U-Hour is your favorite part of the day. Weird stuff always happens during U-Hour. What would you like to do?
 	[[Go to pop-up bookstore -&gt;popup book store]]
 	[[Do some LeetCode -&gt;leetcode]] 
-	[[Chat up Jane Doe -&gt;dining hall]] 
+	[[Chat up Jane Doe -&gt;dining hall intro]] 
 	(if: ($weekday is &quot;Tuesday&quot; or $weekday is &quot;Thursday&quot;))[
 		[[Go to the Society of Computer Science-&gt;club meeting]]
 	]
@@ -79,11 +79,11 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1448,494" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1399,500" size="100,100">|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
-  	[[dine with jane doe-&gt;dining hall]]
+  	[[dine with jane doe-&gt;dining hall intro]]
 	(unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
   	[[library-&gt;library]]
 ]
@@ -98,7 +98,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
   	[[leetcode-&gt;leetcode]]
 	[[exercise-&gt;exercise]]
  	[[library-&gt;library]]
-  	[[hit up jane doe-&gt;dining hall]]
+  	[[hit up jane doe-&gt;dining hall intro]]
   	[[cla building-&gt;cla building]]
 ]
 
@@ -163,7 +163,7 @@ LEETCODE +1
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;The grind never ends&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="340,295" size="100,100">(if: $roommate is 0)[
+(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="376,332" size="100,100">(if: $roommate is 0)[
 You come across your roommate, Chad. You feel bad for him because he&#39;s never lived up to his name as Chad. He&#39;s strugging with whether or not to go to class, so you decide to offer some sage advice.
 [[Offer sage advice-&gt;roommate thanks]]
 [[Go do something else-&gt;Morning Before School]] 
@@ -191,6 +191,9 @@ Your name is Billy and you are a Computer Science student in the College of Scie
 (set: $time to 44)
 (set: $DAY_TIME to 11)
 (set: $TOTAL_TIME to $DAY_TIME * 5)
+
+(set: $jane_health to 4)
+(set: $jane_leetcode to 4)
 
 (set: $roommate to 0)
 (set: $ROOMMATE_THRES to 2)
@@ -368,17 +371,29 @@ COST: 4 MONEY
 ]
 
 [[Ask for a blessing-&gt;blessing]]
-[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="" position="901,699" size="100,100">TODO: To simp or not to simp
+[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall intro" tags="" position="867,702" size="100,100">(unless: (history:) contains &quot;dining hall intro&quot;)[
+You make your way to Cal Poly Pomona&#39;s famous all-you-can-eat dining hall. It&#39;s so famous, in fact, that you can barely recall its name. Center dining? Point Loma? Anyways...
+The food isn&#39;t as interesting as who you see there. Why, it&#39;s Jane Doe! She&#39;s a girl from your high school who went to Cal Poly Pomona, just like you!
+[[Approach her-&gt;dining hall jane]]
 (set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1082" size="100,100">Summarize and other stuff maybe?
+(link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
+]
+(else:)[
+You decide to take another trip to Los Olivos. Wait, Los Olivos? No, this is Centerpointe. Understandable mistake.
+
+You see Jane in the distance and you decide to make your move.
+[[Make your move-&gt;dining hall jane]]
+(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
+
+]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1082" size="100,100">Summarize and other stuff maybe?
 
 (unless: $time is $TOTAL_TIME)[
 [[There&#39;s a Great Big Beautiful Tomorrow!-&gt;Morning Before School]]
 ]
 (else:)[
 [[This is the end-&gt;ending]]
-]</tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
+]</tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="863,851" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
 You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
 ]
 (set: $gd_attendance to ($gd_attendance + (a: $weekday)))
@@ -424,7 +439,7 @@ Question 5
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="" position="1101,0" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="" position="1399,1" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
 (set: $leetcode to $leetcode+1)
@@ -551,11 +566,73 @@ Jane&#39;s eyes light up as you reach your hand toward her.
 You appreciate the sentiment but consider this an inappropriate time to herald your greatness.
 Jane lifts you from the pit and you rejoin the others.
 [[All&#39;s well that ends well!-&gt;ending3]]
-]</tw-passagedata><tw-passagedata pid="34" name="chad helps" tags="" position="1721,1452" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="dd helps" tags="" position="1841,1452" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="" position="1593,1601" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="208,291" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
+]</tw-passagedata><tw-passagedata pid="34" name="chad helps" tags="" position="1721,1452" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="35" name="dd helps" tags="" position="1841,1452" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="" position="1593,1601" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="219,340" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
-[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata></tw-storydata>
+[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="" position="701,699" size="100,100">You sit down across from Jane and make some small talk. What will you do?
+
+[[Compliment hair-&gt;compliment hair]]
+[[Brag about LeetCode-&gt;brag about leetcode]]
+[[Show off your gains-&gt;show off your gains]]
+[[Buy her a meal &#39;&#39;COST: 4 MONEY&#39;&#39;-&gt;buy her a meal]]
+
+(set: $histIndex to (history:)&#39;s length-1)
+(link-goto: &quot;Do a 360 and walk away&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="39" name="compliment hair" tags="" position="507,670" size="100,100">You tell Jane that her hair is very nice today. She takes the compliment well.
+
+SIMP +1
+
+(set: $time to $time + 1)
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="40" name="brag about leetcode" tags="" position="530,791" size="100,100">(if: $leetcode &gt; $jane_leetcode)[
+You regale Jane with your heroic tales of tacking LeetCode problems. She&#39;s totally digging it but you get the feeling that she&#39;ll have higher expectations next time.
+(set: $jane_leetcode to $jane_leetcode + 6)
+SIMP +3
+(set: $simp to $simp + 3)
+]
+(else:)[
+Although Jane seems interested, you can tell she&#39;s just being polite. These are the same stories that you told her last time! You&#39;ll need more LeetCode practice to wow her again.
+
+SIMP +1
+(set: $simp to $simp + 1)
+]
+
+(set: $time to $time + 1)
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="41" name="show off your gains" tags="" position="703,897" size="100,100">(if: $health &gt;= $jane_health)[
+You arch your back and straighten your posture. All that time at the BRIC really paid off! Jane smiles and is probably uncomfortable but nonetheless impressed. However, you get the feeling that she won&#39;t be as impressed next time unless you manage to spend more time in the gym.
+
+SIMP +3
+(set: $simp to $simp + 3)
+(set: $jane_health to $jane_health + 6)
+]
+(else:)[
+You begin to subtly flex in front of Jane. However, she&#39;s pretty distracted by her phone. She gives you a quick smile and then goes to get more food. Ouch. Maybe you should spend more time in the gym before you try that again.
+
+SIMP +1
+(set: $simp to $simp + 1)
+]
+
+(set: $time to $time + 1)
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="42" name="buy her a meal" tags="" position="602,896" size="100,100">(if: $money &gt;= 4)[
+You pay for Jane&#39;s meal. You&#39;re a right and proper gentleman and Jane takes notice.
+
+MONEY -4
+SIMP +3
+(set: $money to $money - 4)
+(set: $simp to $simp + 3)
+]
+(else:)[
+You go to pay for Jane&#39;s meal when you realize that you have insufficient funds to pay for her meal! As Jane pulls out her own wallet, you realize that you should do a better job of paying attention to costs.
+
+SIMP -1
+(set: $simp to $simp -1)
+]
+
+(set: $time to $time + 1)
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
