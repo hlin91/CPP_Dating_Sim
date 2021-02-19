@@ -304,6 +304,8 @@ You return to the popup book store.
 
 There stands a man dressed like some kind of horrible goblin. Clearly, he has no sense of color theory, given by his terrible choice of clothing color.
 
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
+
 &quot;Starting Strength, Effective C++, a vial of silicon! You want it? It&#39;s yours my friend! So long as you have enough MONEY.&quot;
 
 MONEY: $money
@@ -356,16 +358,20 @@ COST: 4 MONEY
 ]
 
 [[Ask for a blessing-&gt;blessing]]
-[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="" position="901,725" size="100,100">TODO: To simp or not to simp
+[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="" position="901,725" size="100,100">Jane Doe is here.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
+TODO: To simp or not to simp
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1083" size="100,100">Summarize and other stuff maybe?
-[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
+[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="campus" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
 You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
 ]
 (set: $gd_attendance to ($gd_attendance + (a: $weekday)))
 
 In game dev, you take your seat and wait for class to begin. Dr. Winterville bursts in through the door and gives you a question:
+
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 
 (if: $gd_attendance&#39;s length is 1)
 [
@@ -412,7 +418,7 @@ Question 5
 (set: $leetcode to $leetcode+1)
 (set: $school to $school+1)</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="" position="1899,700" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="" position="710,1434" size="100,100">(if: $money &gt;= 4)[
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="store" position="710,1434" size="100,100">(if: $money &gt;= 4)[
 You purchase Starting Strength
 (set: $inv to $inv + (a: &quot;ss&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -423,7 +429,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="20" name="buy effective c++" tags="" position="714,1314" size="100,100">(if: $money &gt;= 4)[
+]</tw-passagedata><tw-passagedata pid="20" name="buy effective c++" tags="store" position="714,1314" size="100,100">(if: $money &gt;= 4)[
 
 You purchase Effective C\+\+
 (set: $inv to $inv + (a: &quot;ec++&quot;))
@@ -435,7 +441,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="21" name="buy htwfaip" tags="" position="718,1204" size="100,100">(if: $money &gt;= 4)[
+]</tw-passagedata><tw-passagedata pid="21" name="buy htwfaip" tags="store" position="718,1204" size="100,100">(if: $money &gt;= 4)[
 You purchase How to Win Friends and Influence People
 (set: $inv to $inv + (a: &quot;htwfaip&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -446,7 +452,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="" position="711,1071" size="100,100">(if: $money &gt;= 4)[
+]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="store" position="711,1071" size="100,100">(if: $money &gt;= 4)[
 You purchase the hunk of silicon. Maybe someone at the Society of Computer Science can help you make sense of it? They meet on Tuesdays and Thursdays at U-Hour, when the Computer Science energy is strongest.
 (set: $inv to $inv + (a: &quot;silicon&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -457,7 +463,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="23" name="book store vanishes" tags="" position="828,1230" size="100,100">You make your purchase and place it into your backpack. When you look back up, the book store has vanished. You get the feeling that it will be back tomorrow, if there is a tomorrow.
+]</tw-passagedata><tw-passagedata pid="23" name="book store vanishes" tags="store" position="828,1230" size="100,100">You make your purchase and place it into your backpack. When you look back up, the book store has vanished. You get the feeling that it will be back tomorrow, if there is a tomorrow.
 
 (set:$time to $time + 1)
 [[Sounds about right-&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="24" name="silicon transformed" tags="" position="852,292" size="100,100">You show the hooded figure the silicon. The figure nods knowingly, before chanting rhythmically.
@@ -493,14 +499,14 @@ III. Thou shalt test thine code as thou shalt go
 //
 The remaining commandments are hard to understand, and the comments explaining them are unhelpful.
 
-[[Thank you robed figure, very cool!-&gt;club meeting]]</tw-passagedata><tw-passagedata pid="28" name="correct" tags="" position="1113,964" size="100,100">Dr. Winterville&#39;s mouth upturns as his eyes begin to water. He sniffles, wipes his eyes, and smiles broadly at the class.
+[[Thank you robed figure, very cool!-&gt;club meeting]]</tw-passagedata><tw-passagedata pid="28" name="correct" tags="campus" position="1113,964" size="100,100">Dr. Winterville&#39;s mouth upturns as his eyes begin to water. He sniffles, wipes his eyes, and smiles broadly at the class.
 
 &quot;That&#39;s correct! I&#39;m so glad you&#39;ve been paying attention in class.&quot;
 
 (set: $gd_correct to $gd_correct + 1)
 (set: $histIndex to (history:)&#39;s length - 1)
 (link-goto: &quot;I&#39;ll be a game developer yet!&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="campus" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
 
 &quot;No, I&#39;m sorry. That is not the correct answer.&quot;
 
