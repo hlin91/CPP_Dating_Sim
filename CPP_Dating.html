@@ -118,13 +118,12 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 	(replace: ?body)[
 		[[evening-&gt;Evening on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="campus" position="1900,500" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="campus" position="1899,500" size="100,100">|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
 	[[exercise-&gt;exercise]]
  	[[library-&gt;library]]
   	[[hit up jane doe-&gt;dining hall]]
-  	[[cla building-&gt;cla building]]
 ]
 
 
@@ -369,6 +368,8 @@ COST: 4 MONEY
 
 [[Back -&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="campus" position="1023,414" size="100,100">You enter a dimly lit classroom in the College of Science main building. Inside, you see dozens of figures clad in black robes with what looks a motherboard in the center of the room, and a pentagram under that. Your incredulity is interupted by one of the hooded figures approaching you.
 
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/hooded.png&quot; class=character&gt;
+
 &quot;Speak, for thy servant heareth&quot; whispers the hooded figure.
 
 (if: $inv contains &quot;silicon&quot;)[
@@ -546,7 +547,8 @@ Who will you reach out to?
 [[Reach out to Jane Doe-&gt;jane doe helps]]
 [[Reach out to Chad-&gt;chad helps]]
 [[Reach out to Dr. Disrespect-&gt;dd helps]]
-[[Leap into the pit-&gt;ending unknown]]</tw-passagedata><tw-passagedata pid="32" name="winterville helps" tags="" position="1601,1452" size="100,100">You call to Dr. Winterville who is standing nearby.
+[[Leap into the pit-&gt;ending unknown]]</tw-passagedata><tw-passagedata pid="32" name="winterville helps" tags="campus" position="1601,1452" size="100,100">You call to Dr. Winterville who is standing nearby.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 (if: $gamedev_attendance&#39;s length &gt;= 3)[
 &quot;Anything for a student of mine!&quot; Dr. Winterville bellows as he grabs your hand and hoists you back onto land.
 [[All&#39;s well that ends well!-&gt;ending3]]
@@ -556,7 +558,8 @@ Who will you reach out to?
 &quot;Depart from me, for I never knew you.&quot;
 &#39;&#39;You failed to go to class for 3 or more days&#39;&#39;
 [[Time is running out-&gt;ending2]]
-]</tw-passagedata><tw-passagedata pid="33" name="jane doe helps" tags="" position="1481,1450" size="100,100">(unless:$simp &gt;= $SIMP_THRESHOLD)[
+]</tw-passagedata><tw-passagedata pid="33" name="jane doe helps" tags="campus" position="1481,1450" size="100,100">&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
+(unless:$simp &gt;= $SIMP_THRESHOLD)[
 You look up at Jane in your hour of need. Jane looks disdainfully at you.
 &quot;I&#39;m sorry, but do I know you? Like, I really can&#39;t help you right now.&quot;
 &#39;&#39;You failed to get your SIMP to $SIMP_THRESHOLD&#39;&#39;
@@ -568,16 +571,19 @@ Jane&#39;s eyes light up as you reach your hand toward her.
 You appreciate the sentiment but consider this an inappropriate time to herald your greatness.
 Jane lifts you from the pit and you rejoin the others.
 [[All&#39;s well that ends well!-&gt;ending3]]
-]</tw-passagedata><tw-passagedata pid="34" name="chad helps" tags="" position="1721,1452" size="100,100">(if: $roommate &gt; 2)[
+]</tw-passagedata><tw-passagedata pid="34" name="chad helps" tags="campus" position="1721,1452" size="100,100">(if: $roommate &gt; 2)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
 You call for your roommate, who is standing nearby. He rushes to your aid, and with a hefty pull, he lifts you out of the pit!
 [[All&#39;s well that ends well!-&gt;ending3]]
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You call for your roommate, who is standing nearby. He rushes to your aid, but he is unable to lift you out!
 &#39;&#39;You failed to interact with your roommate 2 times&#39;&#39;
 [[Time is running out!-&gt;ending2]]
 ]
-</tw-passagedata><tw-passagedata pid="35" name="dd helps" tags="" position="1841,1452" size="100,100">You beckon to Dr. Discourtesy, and his eyes shine behind his black glasses.
+</tw-passagedata><tw-passagedata pid="35" name="dd helps" tags="campus" position="1841,1452" size="100,100">You beckon to Dr. Discourtesy, and his eyes shine behind his black glasses.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 (if: $inv contains &quot;ss&quot; and $inv contains &quot;ec++&quot; and $inv contains &quot;htwfaip&quot;)[
 &quot;Anything for my favorite customer!&quot; the Doctor bellows as he drags you out of the pit.
 [[All&#39;s well that ends well!-&gt;ending3]]
@@ -586,7 +592,7 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 &quot;I&#39;m afraid I can&#39;t help you. I&#39;ve got a bottom line, and this unpaid labor won&#39;t pay the bills!&quot;
 &#39;&#39;You failed to purchase all of the books available at Dr. Discourtesy&#39;s store&#39;&#39;
 [[Time is running out-&gt;ending2]] 
-]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
+]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="campus" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
 
 [[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="219,340" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
@@ -662,22 +668,26 @@ SIMP -1
 You hardly knew the guy but from what you hear from your old college circle, he&#39;s had a rough go of life. Sounds like he could have used more advice back in undergraduate.
 ]
 (else-if: $roommate &gt;= 1 and $roommate &lt; 3)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You&#39;ve kept in touch over the years with Chad, and he&#39;s doing about as well as anyone could expect. He&#39;s gainfully employed and has a beautiful family. It&#39;s good that you helped him out in undergrad!
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
 But how could you not reminisce about Chad? He became everything you ever wanted to be. He got a job at Google and his major was in History. Legends say he went to the BRIC only twice and managed to put on 18 pounds of pure muscle each time. Legend has it that Chad, your roommate, so embodied the form of the ideal man that he is the reason the name &quot;Chad&quot; is such a meme.
 ]
 
 [[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="campus" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
-[[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="campus" position="1958,1726" size="100,100">You spend some time thinking about Dr. Winterville...
+[[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="campus" position="1957,1726" size="100,100">You spend some time thinking about Dr. Winterville...
 
 (if: $class_attendance is 0)[
 Dr. Winterville who? You never went to class. Which consequently explains why you now work at Burger King. As it turns out, you were 3 units short for your degree, and your financial aid ran out. If life were a game, I&#39;d suggest redoing this one and trying not to mess it up again.
 ]
 (else-if: $class_attendance &gt;= 1 and $gd_correct &lt; 5)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 Dr. Winterville&#39;s class, those were the days. You managed to do well enough in that class to graduate, which led to your employment at a reputable software company. It pays to go to school! 
 ]
 (else-if: $gd_correct is 5)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 That&#39;s right! Dr. Winterville! You were supposed to meet up with him today. You just call him by his first name, Adrian, now. You&#39;re partners at CD Project Green, the game development company you co-founded together. After seeing how well you did in Game Development class, he took you under his wing and into the world of professional game development. 
 
 Cyberpunk 2099 is launching next month thanks in large part to your efforts. Everyone is looking forward to a polished and bug-free release!
@@ -689,24 +699,30 @@ Cyberpunk 2099 is launching next month thanks in large part to your efforts. Eve
 You remember hearing about him being a drifter after he couldn&#39;t build up enough capital to start his streaming career on Twitch. What a shame!
 ]
 (else-if: $inv&#39;s length &gt;= 1 and $inv&#39;s length &lt;= 3)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 Dr. Discourtesy! He managed to become a moderately successful streamer on Twitch. You tune in now and then. You always wonder if you could have contributed more to his career, but you count him lucky that he does what he loves.
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 Dr. Discourtesy! After you bought out his shop, he had all the MONEY he needed to get his career off the ground. You two stayed friends throughout all these years. He was around your family so much that he even met and fell in love with your sister! Their wedding was such a happy occasion, and you were the best man. Your sister couldn&#39;t have married a more faithful, devoted man than Dr. Discourtesy!
 ]
 
 [[Well...what about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="campus" position="2119,1865" size="100,100">You spend some time thinking about Jane...
 
 (if: $roommate &gt;= 3)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
 You visibly cringe as the thought of Jane crosses your mind. After all, she&#39;s with Chad now. Once he achieved schoolwide fame for being such a, well, Chad, the women wouldn&#39;t stop chasing him. Including Jane. They actually ended up together, and somehow, in your bitterness, you wish you never gave him so much advice.
 ]
 (else-if: $simp &lt; 10)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 Jane Doe, the apple of your eye from college. Unfortunately, you two lost touch years ago. Your bond wasn&#39;t incredibly strong to begin with, so this is to be expected.
 ]
 (else-if: $simp &gt;= 10 and $simp &lt; 20)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 Jane Doe...you actually reconnected with her recently. She&#39;s sick and tired of all these bad boys that keep breaking her heart, and it&#39;s finally your chance to shine. You&#39;ve got a date coming up this Friday! I guess good guys really do win in the end!
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 Jane, the love of your life. You and her fell madly in love over the course of your undergraduate career, and are getting married this upcoming May. You reminisce on how hard you worked to woo her all those years ago and marvel at the payoff.
 ]
 
