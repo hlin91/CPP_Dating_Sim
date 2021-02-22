@@ -9,23 +9,49 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play CS4700.</tw-noscript></noscript></tw-story>
-<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="" position="300,499" size="100,100">(if: ($time/$DAY_TIME is 0))[
-	(set: $weekday to &quot;Monday&quot;)
-]
-(else-if: ($time/$DAY_TIME is 1))[
-	(set: $weekday to &quot;Tuesday&quot;)
-]
-(else-if: ($time/$DAY_TIME is 2))[
-	(set: $weekday to &quot;Wednesday&quot;)
-]
-(else-if: ($time/$DAY_TIME is 3))[
-	(set: $weekday to &quot;Thursday&quot;)
-]
-(else-if: ($time/$DAY_TIME is 4))[
-	(set: $weekday to &quot;Friday&quot;)
-]
+<tw-storydata name="CS4700" startnode="11" creator="Twine" creator-version="2.3.13" ifid="5C66DAAE-9E00-494A-84A0-40DBF88D3657" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="dorm"] {
+  background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/dorm.png");
+  background-size: cover;
+}
+tw-story[tags~="campus"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/campus.png");
+  background-size: cover;
+}
+tw-story[tags~="store"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/store.png");
+  background-size: cover;
+}
+tw-story[tags~="library"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/library.png");
+  background-size: cover;
+}
+tw-story[tags~="exercise"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/exercise.png");
+  background-size: cover;
+}
+tw-story[tags~="leetcode"] {
+	background-image: url("https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/bgs/leetcode.png");
+  background-size: cover;
+}
 
+body, tw-story {
+}
+
+tw-passage {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 5%;
+  margin: auto;
+}
+
+.character {
+  height: 25vw;
+  width: auto;
+  text-align: center;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="dorm" position="301,499" size="100,100">(if: ($time/11 is 0))[(set: $weekday to &quot;Monday&quot;)](else-if: ($time/11 is 1))[(set: $weekday to &quot;Tuesday&quot;)](else-if: ($time/11 is 2))[(set: $weekday to &quot;Wednesday&quot;)](else-if: ($time/11 is 3))[(set: $weekday to &quot;Thursday&quot;)](else-if: ($time/11 is 4))[(set: $weekday to &quot;Friday&quot;)]
 |body&gt;[
+Your roommmate is here.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 Time: $time
 Today is $weekday, and you&#39;ve got some time to kill before class. What would you like to do?
 [[leetcode-&gt;leetcode]]
@@ -34,29 +60,28 @@ Today is $weekday, and you&#39;ve got some time to kill before class. What would
 [[kill time-&gt;kill time]]
 [[exercise-&gt;exercise]]
 ]
-
-(if: ($time%$DAY_TIME) is 1)[
+(if: ($time%11) is 1)[
 	(replace: ?body)[
 		Seems like that&#39;s all you&#39;ve got time for today. Time to get a move on!
 		[[Go to school-&gt;Morning at School]]
 	]
-]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="" position="605,501" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="2" name="Morning at School" tags="campus" position="601,501" size="100,100">|body&gt;[
 Time: $time
 It is still the morning of $weekday, but now you&#39;re at the Bronco Student Center. What would you like to do?
 [[leetcode-&gt;leetcode]]
 [[exercise-&gt;exercise]]
-[[dine with jane doe-&gt;dining hall intro]]
+[[dine with jane doe-&gt;dining hall]]
 (unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
 [[library-&gt;library]]
 [[go to work-&gt;go to work]]
 ]
 
-(if: ($time%$DAY_TIME) is 4)[
+(if: ($time%11) is 4)[
 	(replace: ?body)[
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
 	]
-]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="" position="858,493" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="campus" position="900,533" size="100,100">|body&gt;[
 
 It&#39;s now U-Hour!
 
@@ -67,50 +92,49 @@ You don&#39;t remember there being U-Hour on $weekday, but you brush off that fa
 U-Hour is your favorite part of the day. Weird stuff always happens during U-Hour. What would you like to do?
 	[[Go to pop-up bookstore -&gt;popup book store]]
 	[[Do some LeetCode -&gt;leetcode]] 
-	[[Chat up Jane Doe -&gt;dining hall intro]] 
+	[[Chat up Jane Doe -&gt;dining hall]] 
 	(if: ($weekday is &quot;Tuesday&quot; or $weekday is &quot;Thursday&quot;))[
 		[[Go to the Society of Computer Science-&gt;club meeting]]
 	]
 ]
 
 
-(if: ($time%$DAY_TIME) is 5)[
+(if: ($time%11) is 5)[
 	(replace: ?body)[
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="" position="1399,500" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="campus" position="1448,494" size="100,100">|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
-  	[[dine with jane doe-&gt;dining hall intro]]
+  	[[dine with jane doe-&gt;dining hall]]
 	(unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
   	[[library-&gt;library]]
 ]
 
 
-(if: ($time%$DAY_TIME) is 8)[
+(if: ($time%11) is 8)[
 	(replace: ?body)[
 		[[evening-&gt;Evening on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="" position="1900,500" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="campus" position="1899,500" size="100,100">|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
 	[[exercise-&gt;exercise]]
  	[[library-&gt;library]]
-  	[[hit up jane doe-&gt;dining hall intro]]
-  	[[cla building-&gt;cla building]]
+  	[[hit up jane doe-&gt;dining hall]]
 ]
 
 
-(if: ($time%$DAY_TIME) is 0)[
+(if: ($time%11) is 0)[
 	(replace: ?body)[
 		[[go to bed-&gt;sleep]]
 	]
-]</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="" position="298,701" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
+]</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="leetcode" position="298,701" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Welp, that&#39;s that.&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="" position="701,0" size="100,100">(set: _noun_choice to (random: 1, $exercise_noun&#39;s length))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="exercise" position="701,0" size="100,100">(set: _noun_choice to (random: 1, $exercise_noun&#39;s length))
 (set: _verb_choice to (random: 1, $exercise_verb&#39;s length))
 
 You grab your towel and head to the BRIC. You leave your personal belongings in the locker room and spend the better part of an hour (print: ($exercise_verb&#39;s (_verb_choice))) a (print: ($exercise_noun&#39;s (_noun_choice)))
@@ -127,7 +151,7 @@ The acquired knowledge from Starting Strength makes your time in the gym even mo
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Incredible gains!&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="" position="97,600" size="100,100">(set: _noun_choice to (random: 1, $work_noun&#39;s length))
+(set: $health to $health+2)</tw-passagedata><tw-passagedata pid="8" name="go to work" tags="campus" position="97,600" size="100,100">(set: _noun_choice to (random: 1, $work_noun&#39;s length))
 (set: _verb_choice to (random: 1, $work_verb&#39;s length))
 (set: _skill_choice to (random: 1, $work_skill&#39;s length))
 You go to your student job with the administration, where you develop your (print: ($work_skill&#39;s (_skill_choice))) by (print: ($work_verb&#39;s (_verb_choice))) a way to (print: ($work_noun&#39;s (_noun_choice))).
@@ -145,7 +169,7 @@ MONEY +1
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Here comes the money&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $money to $money+2)</tw-passagedata><tw-passagedata pid="9" name="leetcode" tags="" position="900,0" size="100,100">(set: _noun_choice to (random: 1, $leetcode_noun&#39;s length))
+(set: $money to $money+2)</tw-passagedata><tw-passagedata pid="9" name="leetcode" tags="leetcode" position="900,0" size="100,100">(set: _noun_choice to (random: 1, $leetcode_noun&#39;s length))
 (set: _verb_choice to (random: 1, $leetcode_verb&#39;s length))
 
 Alan Turing, from beyond the grave, sheds a single tear as you spend the better part of an hour (print: ($leetcode_verb&#39;s (_verb_choice))) a (print: ($leetcode_noun&#39;s (_noun_choice)))
@@ -163,28 +187,9 @@ LEETCODE +1
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;The grind never ends&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="" position="376,332" size="100,100">(if: $roommate is 0)[
-You come across your roommate, Chad. You feel bad for him because he&#39;s never lived up to his name as Chad. He&#39;s strugging with whether or not to go to class, so you decide to offer some sage advice.
-[[Offer sage advice-&gt;roommate thanks]]
-[[Go do something else-&gt;Morning Before School]] 
-]
-(else-if: $roommate is 1)[
-You once again encounter your roommate, Chad. He&#39;s looking much healthier since you last spoke to him. He asks you for some advice on the gym and getting ripped in the span of a couple days. You know a few pointers as a BRIC regular yourself.
-[[Give him a few pointers-&gt;roommate thanks]]
-[[Go do something else-&gt;Morning Before School]] 
-]
-(else-if: $roommate is 2)[
-You see your roommate Chad, looking more healthy and confident than ever! He&#39;s having problems with his girlfriend and romance is a particular strength of yours. Friends often come to you for your precise and intelligent advice.
-[[Give him some precise and intelligent advice-&gt;roommate thanks]]
-[[Go do something else-&gt;Morning Before School]] 
-]
-(else:)[
-You see your roommate Chad, or at least you think you do. He must be three feet taller than the last time you saw him and his very image seems to evade description. You decide against trying to give him any more advice.
-(set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Uh oh&quot;, (history:)&#39;s ($histIndex))
-]</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="96,396" size="100,100">(set: $PLAYER_NAME to &quot;Billy&quot;)
-
-Your name is Billy and you are a Computer Science student in the College of Science at Cal Poly Pomona. The world will end on Friday.
+(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="dorm" position="199,200" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="94,396" size="100,100">
 
 [[Time to play!-&gt;Morning Before School]]
 
@@ -240,9 +245,6 @@ Your name is Billy and you are a Computer Science student in the College of Scie
 		&quot;tetranomically linked list&quot;,
 		&quot;2d array&quot;,
 		&quot;4d array&quot;,
-		&quot;stack&quot;,
-		&quot;queue&quot;,
-		&quot;quantum linked list&quot;
 	)
 )
 
@@ -310,7 +312,7 @@ Your name is Billy and you are a Computer Science student in the College of Scie
 		&quot;critical thinking&quot;,
 		&quot;conflict resolution&quot;
 	)
-)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
+)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="store" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
 You take some time out of the day to go to CPP&#39;s famous popup book store. It&#39;s right outside the Bronco Student Center.
 
 You see a man wearing sunglasses and a red jacket. His nametag reads //Dr. Discourtesy//. You don&#39;t thin this man has a medical license. He has a strange beard.
@@ -364,7 +366,9 @@ COST: 4 MONEY
 ]\
 ]
 
-[[Back -&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="" position="1025,414" size="100,100">You enter a dimly lit classroom in the College of Science main building. Inside, you see dozens of figures clad in black robes with what looks a motherboard in the center of the room, and a pentagram under that. Your incredulity is interupted by one of the hooded figures approaching you.
+[[Back -&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="13" name="club meeting" tags="campus" position="1023,414" size="100,100">You enter a dimly lit classroom in the College of Science main building. Inside, you see dozens of figures clad in black robes with what looks a motherboard in the center of the room, and a pentagram under that. Your incredulity is interupted by one of the hooded figures approaching you.
+
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/hooded.png&quot; class=character&gt;
 
 &quot;Speak, for thy servant heareth&quot; whispers the hooded figure.
 
@@ -373,34 +377,20 @@ COST: 4 MONEY
 ]
 
 [[Ask for a blessing-&gt;blessing]]
-[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall intro" tags="" position="867,702" size="100,100">(unless: (history:) contains &quot;dining hall intro&quot;)[
-You make your way to Cal Poly Pomona&#39;s famous all-you-can-eat dining hall. It&#39;s so famous, in fact, that you can barely recall its name. Center dining? Point Loma? Anyways...
-The food isn&#39;t as interesting as who you see there. Why, it&#39;s Jane Doe! She&#39;s a girl from your high school who went to Cal Poly Pomona, just like you!
-[[Approach her-&gt;dining hall jane]]
+[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="campus" position="901,725" size="100,100">Jane Doe is here.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
+TODO: To simp or not to simp
 (set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
-]
-(else:)[
-You decide to take another trip to Los Olivos. Wait, Los Olivos? No, this is Centerpointe. Understandable mistake.
-
-You see Jane in the distance and you decide to make your move.
-[[Make your move-&gt;dining hall jane]]
-(set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
-
-]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="" position="900,1082" size="100,100">Summarize and other stuff maybe?
-
-(unless: $time is $TOTAL_TIME)[
-[[There&#39;s a Great Big Beautiful Tomorrow!-&gt;Morning Before School]]
-]
-(else:)[
-[[This is the end-&gt;ending]]
-]</tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="" position="863,851" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="900,1083" size="100,100">Summarize and other stuff maybe?
+[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="campus" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
 You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
 ]
 (set: $gd_attendance to ($gd_attendance + (a: $weekday)))
 
 In game dev, you take your seat and wait for class to begin. Dr. Winterville bursts in through the door and gives you a question:
+
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 
 (if: $gd_attendance&#39;s length is 1)
 [
@@ -441,13 +431,13 @@ Question 5
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="" position="1400,100" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="library" position="1400,100" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
 (set: $leetcode to $leetcode+1)
-(set: $school to $school+1)</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="" position="1899,700" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(set: $school to $school+1)</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="campus" position="1899,700" size="100,100">(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="" position="700,1408" size="100,100">(if: $money &gt;= 4)[
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="store" position="710,1434" size="100,100">(if: $money &gt;= 4)[
 You purchase Starting Strength
 (set: $inv to $inv + (a: &quot;ss&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -458,7 +448,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="20" name="buy effective c++" tags="" position="701,1300" size="100,100">(if: $money &gt;= 4)[
+]</tw-passagedata><tw-passagedata pid="20" name="buy effective c++" tags="store" position="714,1314" size="100,100">(if: $money &gt;= 4)[
 
 You purchase Effective C++
 (set: $inv to $inv + (a: &quot;ec++&quot;))
@@ -470,7 +460,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="21" name="buy htwfaip" tags="" position="702,1195" size="100,100">(if: $money &gt;= 4)[
+]</tw-passagedata><tw-passagedata pid="21" name="buy htwfaip" tags="store" position="718,1204" size="100,100">(if: $money &gt;= 4)[
 You purchase How to Win Friends and Influence People
 (set: $inv to $inv + (a: &quot;htwfaip&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -481,7 +471,7 @@ A voice booms from another direction.
 
 &quot;I&#39;m sorry friend, I can&#39;t GIVE credit. Come back when you&#39;re a little, mmmm... RICHER!&quot;
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="" position="700,1094" size="100,100">(if: $money &gt;= 4)[
+]</tw-passagedata><tw-passagedata pid="22" name="buy silicon" tags="store" position="711,1071" size="100,100">(if: $money &gt;= 4)[
 You purchase the hunk of silicon. Maybe someone at the Society of Computer Science can help you make sense of it? They meet on Tuesdays and Thursdays at U-Hour, when the Computer Science energy is strongest.
 (set: $inv to $inv + (a: &quot;silicon&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -492,10 +482,10 @@ A voice bellows from somewhere:
 &quot;Hey, you don&#39;t have enough money! Put it down! I need money so I can stream!&quot;
 
 [[Can do, strange man-&gt;popup book store]]
-]</tw-passagedata><tw-passagedata pid="23" name="book store vanishes" tags="" position="828,1230" size="100,100">You make your purchase and place it into your backpack. When you look back up, the book store has vanished. You get the feeling that it will be back tomorrow, if there is a tomorrow.
+]</tw-passagedata><tw-passagedata pid="23" name="book store vanishes" tags="store" position="828,1230" size="100,100">You make your purchase and place it into your backpack. When you look back up, the book store has vanished. You get the feeling that it will be back tomorrow, if there is a tomorrow.
 
 (set:$time to $time + 1)
-[[Sounds about right-&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="24" name="silicon transformed" tags="" position="852,292" size="100,100">You show the hooded figure the silicon. The figure nods knowingly, before chanting rhythmically.
+[[Sounds about right-&gt;U-Hour]] </tw-passagedata><tw-passagedata pid="24" name="silicon transformed" tags="campus" position="852,292" size="100,100">You show the hooded figure the silicon. The figure nods knowingly, before chanting rhythmically.
 
 &quot;In the name of our Lord Linus Torvalds, let this silicon shew forth its true form!&quot;
 
@@ -507,18 +497,18 @@ You look back down at the hunk of silicon to find now it has been transformed in
 &quot;The U-Hour is nearly up, and our powers are waning. Outsider, you must leave for now.&quot;
 
 (set: $time to $time + 1)
-[[Man, this school is weird-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="25" name="blessing" tags="" position="968,251" size="100,100">The hooded figure removes his hood and stares into your soul. You feel something unlock within you, and you now know the solution to that one LeetCode problem you were stuck on yesterday.
+[[Man, this school is weird-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="25" name="blessing" tags="campus" position="968,251" size="100,100">The hooded figure removes his hood and stares into your soul. You feel something unlock within you, and you now know the solution to that one LeetCode problem you were stuck on yesterday.
 
 LEETCODE +4
 (set: $leetcode to $leetcode + 4)
 
 (set: $time to $time + 1)
-[[Thank you wizard!-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="26" name="scs explanation" tags="" position="1117,255" size="100,100">You ask the robed figure who they are, and what is going on here.
+[[Thank you wizard!-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="26" name="scs explanation" tags="campus" position="1117,255" size="100,100">You ask the robed figure who they are, and what is going on here.
 
 &quot;We are adherents to the old ways, set forth by our Lord Linus Torvalds. We meet here every U-Hour, when the Computer Science energy is strongest, in order to make sacrifices for the atonement of cardinal sins of Computer Science.&quot;
 
 [[Neat-&gt;club meeting]]
-[[What kinds of sins?-&gt;scs sins]]</tw-passagedata><tw-passagedata pid="27" name="scs sins" tags="" position="1184,410" size="100,100">You are directed to a big stone tablet that is etched with text.
+[[What kinds of sins?-&gt;scs sins]]</tw-passagedata><tw-passagedata pid="27" name="scs sins" tags="campus" position="1184,410" size="100,100">You are directed to a big stone tablet that is etched with text.
 
 &#39;&#39;COMPUTER SCIENCE COMMANDMENTS&#39;&#39;
 //0. Thou shalt start thine indexing at 0
@@ -528,20 +518,20 @@ III. Thou shalt test thine code as thou shalt go
 //
 The remaining commandments are hard to understand, and the comments explaining them are unhelpful.
 
-[[Thank you robed figure, very cool!-&gt;club meeting]]</tw-passagedata><tw-passagedata pid="28" name="correct" tags="" position="1098,1003" size="100,100">Dr. Winterville&#39;s mouth upturns as his eyes begin to water. He sniffles, wipes his eyes, and smiles broadly at the class.
+[[Thank you robed figure, very cool!-&gt;club meeting]]</tw-passagedata><tw-passagedata pid="28" name="correct" tags="campus" position="1113,964" size="100,100">Dr. Winterville&#39;s mouth upturns as his eyes begin to water. He sniffles, wipes his eyes, and smiles broadly at the class.
 
 &quot;That&#39;s correct! I&#39;m so glad you&#39;ve been paying attention in class.&quot;
 
 (set: $gd_correct to $gd_correct + 1)
 (set: $histIndex to (history:)&#39;s length - 1)
 (link-goto: &quot;I&#39;ll be a game developer yet!&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="" position="1098,797" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="campus" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
 
 &quot;No, I&#39;m sorry. That is not the correct answer.&quot;
 
 (set: $histIndex to (history:)&#39;s length -1)
 (link-goto: &quot;Better luck tomorrow!&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="30" name="ending" tags="" position="1597,1194" size="100,100">The campus is eerily quiet as you make your way back to your dorm. Just as you pass the CLA building, the earth beneath you begins to mildly shake. The shaking brings others to the outskirts of the CLA building, as it is widely regarded as the best place to be in the case of an earthquake. You are comforted by familiar faces.
+(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="30" name="ending" tags="campus" position="1597,1194" size="100,100">The campus is eerily quiet as you make your way back to your dorm. Just as you pass the CLA building, the earth beneath you begins to mildly shake. The shaking brings others to the outskirts of the CLA building, as it is widely regarded as the best place to be in the case of an earthquake. You are comforted by familiar faces.
 
 [[But then...-&gt;ending2]]</tw-passagedata><tw-passagedata pid="31" name="ending2" tags="" position="1601,1302" size="100,100">(unless: (history:) contains &quot;ending2&quot;)[
 The shaking grows harder and harder, and suddenly the earth below you opens up!
@@ -557,7 +547,8 @@ Who will you reach out to?
 [[Reach out to Jane Doe-&gt;jane doe helps]]
 [[Reach out to Chad-&gt;chad helps]]
 [[Reach out to Dr. Disrespect-&gt;dd helps]]
-[[Leap into the pit-&gt;ending unknown]]</tw-passagedata><tw-passagedata pid="32" name="winterville helps" tags="" position="1601,1452" size="100,100">You call to Dr. Winterville who is standing nearby.
+[[Leap into the pit-&gt;ending unknown]]</tw-passagedata><tw-passagedata pid="32" name="winterville helps" tags="campus" position="1601,1452" size="100,100">You call to Dr. Winterville who is standing nearby.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 (if: $gamedev_attendance&#39;s length &gt;= 3)[
 &quot;Anything for a student of mine!&quot; Dr. Winterville bellows as he grabs your hand and hoists you back onto land.
 [[All&#39;s well that ends well!-&gt;ending3]]
@@ -567,7 +558,8 @@ Who will you reach out to?
 &quot;Depart from me, for I never knew you.&quot;
 &#39;&#39;You failed to go to class for 3 or more days&#39;&#39;
 [[Time is running out-&gt;ending2]]
-]</tw-passagedata><tw-passagedata pid="33" name="jane doe helps" tags="" position="1481,1450" size="100,100">(unless:$simp &gt;= $SIMP_THRESHOLD)[
+]</tw-passagedata><tw-passagedata pid="33" name="jane doe helps" tags="campus" position="1481,1450" size="100,100">&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
+(unless:$simp &gt;= $SIMP_THRESHOLD)[
 You look up at Jane in your hour of need. Jane looks disdainfully at you.
 &quot;I&#39;m sorry, but do I know you? Like, I really can&#39;t help you right now.&quot;
 &#39;&#39;You failed to get your SIMP to $SIMP_THRESHOLD&#39;&#39;
@@ -579,16 +571,19 @@ Jane&#39;s eyes light up as you reach your hand toward her.
 You appreciate the sentiment but consider this an inappropriate time to herald your greatness.
 Jane lifts you from the pit and you rejoin the others.
 [[All&#39;s well that ends well!-&gt;ending3]]
-]</tw-passagedata><tw-passagedata pid="34" name="chad helps" tags="" position="1721,1452" size="100,100">(if: $roommate &gt; 2)[
+]</tw-passagedata><tw-passagedata pid="34" name="chad helps" tags="campus" position="1721,1452" size="100,100">(if: $roommate &gt; 2)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
 You call for your roommate, who is standing nearby. He rushes to your aid, and with a hefty pull, he lifts you out of the pit!
 [[All&#39;s well that ends well!-&gt;ending3]]
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You call for your roommate, who is standing nearby. He rushes to your aid, but he is unable to lift you out!
 &#39;&#39;You failed to interact with your roommate 2 times&#39;&#39;
 [[Time is running out!-&gt;ending2]]
 ]
-</tw-passagedata><tw-passagedata pid="35" name="dd helps" tags="" position="1841,1452" size="100,100">You beckon to Dr. Discourtesy, and his eyes shine behind his black glasses.
+</tw-passagedata><tw-passagedata pid="35" name="dd helps" tags="campus" position="1841,1452" size="100,100">You beckon to Dr. Discourtesy, and his eyes shine behind his black glasses.
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 (if: $inv contains &quot;ss&quot; and $inv contains &quot;ec++&quot; and $inv contains &quot;htwfaip&quot;)[
 &quot;Anything for my favorite customer!&quot; the Doctor bellows as he drags you out of the pit.
 [[All&#39;s well that ends well!-&gt;ending3]]
@@ -597,13 +592,13 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 &quot;I&#39;m afraid I can&#39;t help you. I&#39;ve got a bottom line, and this unpaid labor won&#39;t pay the bills!&quot;
 &#39;&#39;You failed to purchase all of the books available at Dr. Discourtesy&#39;s store&#39;&#39;
 [[Time is running out-&gt;ending2]] 
-]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
+]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="campus" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
 
 [[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="219,340" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
-[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="" position="701,699" size="100,100">You sit down across from Jane and make some small talk. What will you do?
+[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="701,699" size="100,100">You sit down across from Jane and make some small talk. What will you do?
 
 [[Compliment hair-&gt;compliment hair]]
 [[Brag about LeetCode-&gt;brag about leetcode]]
@@ -611,13 +606,13 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 [[Buy her a meal &#39;&#39;COST: 4 MONEY&#39;&#39;-&gt;buy her a meal]]
 
 (set: $histIndex to (history:)&#39;s length-1)
-(link-goto: &quot;Do a 360 and walk away&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="39" name="compliment hair" tags="" position="507,670" size="100,100">You tell Jane that her hair is very nice today. She takes the compliment well.
+(link-goto: &quot;Do a 360 and walk away&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="39" name="compliment hair" tags="campus" position="507,670" size="100,100">You tell Jane that her hair is very nice today. She takes the compliment well.
 
 SIMP +1
 
 (set: $time to $time + 1)
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="40" name="brag about leetcode" tags="" position="530,791" size="100,100">(if: $leetcode &gt; $jane_leetcode)[
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="40" name="brag about leetcode" tags="campus" position="530,791" size="100,100">(if: $leetcode &gt; $jane_leetcode)[
 You regale Jane with your heroic tales of tacking LeetCode problems. She&#39;s totally digging it but you get the feeling that she&#39;ll have higher expectations next time.
 (set: $jane_leetcode to $jane_leetcode + 6)
 SIMP +3
@@ -632,7 +627,7 @@ SIMP +1
 
 (set: $time to $time + 1)
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="41" name="show off your gains" tags="" position="703,897" size="100,100">(if: $health &gt;= $jane_health)[
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="41" name="show off your gains" tags="campus" position="703,897" size="100,100">(if: $health &gt;= $jane_health)[
 You arch your back and straighten your posture. All that time at the BRIC really paid off! Jane smiles and is probably uncomfortable but nonetheless impressed. However, you get the feeling that she won&#39;t be as impressed next time unless you manage to spend more time in the gym.
 
 SIMP +3
@@ -648,7 +643,7 @@ SIMP +1
 
 (set: $time to $time + 1)
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="42" name="buy her a meal" tags="" position="602,896" size="100,100">(if: $money &gt;= 4)[
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="42" name="buy her a meal" tags="campus" position="602,896" size="100,100">(if: $money &gt;= 4)[
 You pay for Jane&#39;s meal. You&#39;re a right and proper gentleman and Jane takes notice.
 
 MONEY -4
@@ -667,61 +662,71 @@ SIMP -1
 (set: $histIndex to (history:)&#39;s length-2)
 (link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="43" name="ending unknown" tags="" position="1907,1297" size="100,100">You plunge further into the center of the Earth. You hear a voice that calls out from...somewhere...
 
-[[&quot;Would you like to try again?&quot;-&gt;Game Start]]</tw-passagedata><tw-passagedata pid="44" name="roommate ending" tags="" position="1800,1736" size="100,100">You reminisce about your roommate Chad at Cal Poly Pomona.
+[[&quot;Would you like to try again?&quot;-&gt;Game Start]]</tw-passagedata><tw-passagedata pid="44" name="roommate ending" tags="dorm" position="1800,1736" size="100,100">You reminisce about your roommate Chad at Cal Poly Pomona.
 
 (if: $roommate is 0)[
 You hardly knew the guy but from what you hear from your old college circle, he&#39;s had a rough go of life. Sounds like he could have used more advice back in undergraduate.
 ]
 (else-if: $roommate &gt;= 1 and $roommate &lt; 3)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You&#39;ve kept in touch over the years with Chad, and he&#39;s doing about as well as anyone could expect. He&#39;s gainfully employed and has a beautiful family. It&#39;s good that you helped him out in undergrad!
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
 But how could you not reminisce about Chad? He became everything you ever wanted to be. He got a job at Google and his major was in History. Legends say he went to the BRIC only twice and managed to put on 18 pounds of pure muscle each time. Legend has it that Chad, your roommate, so embodied the form of the ideal man that he is the reason the name &quot;Chad&quot; is such a meme.
 ]
 
-[[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
-[[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="" position="1958,1726" size="100,100">You spend some time thinking about Dr. Winterville...
+[[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="campus" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
+[[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="campus" position="1957,1726" size="100,100">You spend some time thinking about Dr. Winterville...
 
 (if: $class_attendance is 0)[
 Dr. Winterville who? You never went to class. Which consequently explains why you now work at Burger King. As it turns out, you were 3 units short for your degree, and your financial aid ran out. If life were a game, I&#39;d suggest redoing this one and trying not to mess it up again.
 ]
 (else-if: $class_attendance &gt;= 1 and $gd_correct &lt; 5)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 Dr. Winterville&#39;s class, those were the days. You managed to do well enough in that class to graduate, which led to your employment at a reputable software company. It pays to go to school! 
 ]
 (else-if: $gd_correct is 5)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 That&#39;s right! Dr. Winterville! You were supposed to meet up with him today. You just call him by his first name, Adrian, now. You&#39;re partners at CD Project Green, the game development company you co-founded together. After seeing how well you did in Game Development class, he took you under his wing and into the world of professional game development. 
 
 Cyberpunk 2099 is launching next month thanks in large part to your efforts. Everyone is looking forward to a polished and bug-free release!
 ]
 
-[[What about Dr. Discourtesy?-&gt;dr ending]]</tw-passagedata><tw-passagedata pid="47" name="dr ending" tags="" position="2119,1715" size="100,100">You spend some time thinking about Dr. Discourtesy...
+[[What about Dr. Discourtesy?-&gt;dr ending]]</tw-passagedata><tw-passagedata pid="47" name="dr ending" tags="store" position="2119,1715" size="100,100">You spend some time thinking about Dr. Discourtesy...
 
 (if: $inv&#39;s length is 0)[
 You remember hearing about him being a drifter after he couldn&#39;t build up enough capital to start his streaming career on Twitch. What a shame!
 ]
 (else-if: $inv&#39;s length &gt;= 1 and $inv&#39;s length &lt;= 3)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 Dr. Discourtesy! He managed to become a moderately successful streamer on Twitch. You tune in now and then. You always wonder if you could have contributed more to his career, but you count him lucky that he does what he loves.
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 Dr. Discourtesy! After you bought out his shop, he had all the MONEY he needed to get his career off the ground. You two stayed friends throughout all these years. He was around your family so much that he even met and fell in love with your sister! Their wedding was such a happy occasion, and you were the best man. Your sister couldn&#39;t have married a more faithful, devoted man than Dr. Discourtesy!
 ]
 
-[[Well...what about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="" position="2119,1865" size="100,100">You spend some time thinking about Jane...
+[[Well...what about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="campus" position="2119,1865" size="100,100">You spend some time thinking about Jane...
 
 (if: $roommate &gt;= 3)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
 You visibly cringe as the thought of Jane crosses your mind. After all, she&#39;s with Chad now. Once he achieved schoolwide fame for being such a, well, Chad, the women wouldn&#39;t stop chasing him. Including Jane. They actually ended up together, and somehow, in your bitterness, you wish you never gave him so much advice.
 ]
 (else-if: $simp &lt; 10)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 Jane Doe, the apple of your eye from college. Unfortunately, you two lost touch years ago. Your bond wasn&#39;t incredibly strong to begin with, so this is to be expected.
 ]
 (else-if: $simp &gt;= 10 and $simp &lt; 20)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 Jane Doe...you actually reconnected with her recently. She&#39;s sick and tired of all these bad boys that keep breaking her heart, and it&#39;s finally your chance to shine. You&#39;ve got a date coming up this Friday! I guess good guys really do win in the end!
 ]
 (else:)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 Jane, the love of your life. You and her fell madly in love over the course of your undergraduate career, and are getting married this upcoming May. You reminisce on how hard you worked to woo her all those years ago and marvel at the payoff.
 ]
 
-[[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
+[[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="campus" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
 
 [[Play again-&gt;Game Start]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
