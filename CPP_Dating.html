@@ -656,7 +656,7 @@ SIMP -1
 (set: $histIndex to (history:)&#39;s length-2)
 (link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="43" name="ending unknown" tags="" position="1907,1297" size="100,100">You plunge further into the center of the Earth. You hear a voice that calls out from...somewhere...
 
-[[&quot;Would you like to try again?&quot;-&gt;Game Start]]</tw-passagedata><tw-passagedata pid="44" name="roommate ending" tags="" position="1800,1736" size="100,100">You reminisce about your roommate Chad at Cal Poly Pomona.
+[[&quot;Would you like to try again?&quot;-&gt;Game Start]]</tw-passagedata><tw-passagedata pid="44" name="roommate ending" tags="dorm" position="1800,1736" size="100,100">You reminisce about your roommate Chad at Cal Poly Pomona.
 
 (if: $roommate is 0)[
 You hardly knew the guy but from what you hear from your old college circle, he&#39;s had a rough go of life. Sounds like he could have used more advice back in undergraduate.
@@ -668,8 +668,8 @@ You&#39;ve kept in touch over the years with Chad, and he&#39;s doing about as w
 But how could you not reminisce about Chad? He became everything you ever wanted to be. He got a job at Google and his major was in History. Legends say he went to the BRIC only twice and managed to put on 18 pounds of pure muscle each time. Legend has it that Chad, your roommate, so embodied the form of the ideal man that he is the reason the name &quot;Chad&quot; is such a meme.
 ]
 
-[[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
-[[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="" position="1958,1726" size="100,100">You spend some time thinking about Dr. Winterville...
+[[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="campus" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
+[[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="campus" position="1958,1726" size="100,100">You spend some time thinking about Dr. Winterville...
 
 (if: $class_attendance is 0)[
 Dr. Winterville who? You never went to class. Which consequently explains why you now work at Burger King. As it turns out, you were 3 units short for your degree, and your financial aid ran out. If life were a game, I&#39;d suggest redoing this one and trying not to mess it up again.
@@ -683,7 +683,7 @@ That&#39;s right! Dr. Winterville! You were supposed to meet up with him today. 
 Cyberpunk 2099 is launching next month thanks in large part to your efforts. Everyone is looking forward to a polished and bug-free release!
 ]
 
-[[What about Dr. Discourtesy?-&gt;dr ending]]</tw-passagedata><tw-passagedata pid="47" name="dr ending" tags="" position="2119,1715" size="100,100">You spend some time thinking about Dr. Discourtesy...
+[[What about Dr. Discourtesy?-&gt;dr ending]]</tw-passagedata><tw-passagedata pid="47" name="dr ending" tags="store" position="2119,1715" size="100,100">You spend some time thinking about Dr. Discourtesy...
 
 (if: $inv&#39;s length is 0)[
 You remember hearing about him being a drifter after he couldn&#39;t build up enough capital to start his streaming career on Twitch. What a shame!
@@ -695,7 +695,7 @@ Dr. Discourtesy! He managed to become a moderately successful streamer on Twitch
 Dr. Discourtesy! After you bought out his shop, he had all the MONEY he needed to get his career off the ground. You two stayed friends throughout all these years. He was around your family so much that he even met and fell in love with your sister! Their wedding was such a happy occasion, and you were the best man. Your sister couldn&#39;t have married a more faithful, devoted man than Dr. Discourtesy!
 ]
 
-[[Well...what about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="" position="2119,1865" size="100,100">You spend some time thinking about Jane...
+[[Well...what about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="campus" position="2119,1865" size="100,100">You spend some time thinking about Jane...
 
 (if: $roommate &gt;= 3)[
 You visibly cringe as the thought of Jane crosses your mind. After all, she&#39;s with Chad now. Once he achieved schoolwide fame for being such a, well, Chad, the women wouldn&#39;t stop chasing him. Including Jane. They actually ended up together, and somehow, in your bitterness, you wish you never gave him so much advice.
@@ -710,7 +710,7 @@ Jane Doe...you actually reconnected with her recently. She&#39;s sick and tired 
 Jane, the love of your life. You and her fell madly in love over the course of your undergraduate career, and are getting married this upcoming May. You reminisce on how hard you worked to woo her all those years ago and marvel at the payoff.
 ]
 
-[[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
+[[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="campus" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
 
 [[Play again-&gt;Game Start]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
