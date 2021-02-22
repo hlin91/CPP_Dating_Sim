@@ -377,12 +377,24 @@ COST: 4 MONEY
 ]
 
 [[Ask for a blessing-&gt;blessing]]
-[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="campus" position="901,725" size="100,100">Jane Doe is here.
+[[&quot;What is going on here?&quot;-&gt;scs explanation]]</tw-passagedata><tw-passagedata pid="14" name="dining hall" tags="campus" position="881,709" size="100,100">Jane Doe is here.
 &lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
-TODO: To simp or not to simp
+(unless: (history:) contains &quot;dining hall intro&quot;)[
+You make your way to Cal Poly Pomona&#39;s famous all-you-can-eat dining hall. It&#39;s so famous, in fact, that you can barely recall its name. Center dining? Point Loma? Anyways...
+The food isn&#39;t as interesting as who you see there. Why, it&#39;s Jane Doe! She&#39;s a girl from your high school who went to Cal Poly Pomona, just like you!
+[[Approach her-&gt;dining hall jane]]
 (set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="900,1083" size="100,100">Summarize and other stuff maybe?
+(link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
+]
+(else:)[
+You decide to take another trip to Los Olivos. Wait, Los Olivos? No, this is Centerpointe. Understandable mistake.
+
+You see Jane in the distance and you decide to make your move.
+[[Make your move-&gt;dining hall jane]]
+(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
+
+]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="900,1083" size="100,100">Summarize and other stuff maybe?
 [[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="campus" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
 You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
 ]
@@ -598,7 +610,7 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
-[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="701,699" size="100,100">You sit down across from Jane and make some small talk. What will you do?
+[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="702,694" size="100,100">You sit down across from Jane and make some small talk. What will you do?
 
 [[Compliment hair-&gt;compliment hair]]
 [[Brag about LeetCode-&gt;brag about leetcode]]
