@@ -426,8 +426,13 @@ You see Jane in the distance and you decide to make your move.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
 
-]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="900,1083" size="100,100">TODO: Summarize and other stuff maybe?
-[[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="campus" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
+]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="1127,1158" size="100,100">Slumber falls upon you, and a new day awaits.
+(unless: $weekday is &quot;Friday&quot;)[
+[[New day-&gt;Morning Before School]] 
+]
+(else:)[
+[[New day...?-&gt;ending]]
+]</tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="campus" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
 You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
 ]
 (set: $gd_attendance to ($gd_attendance + (a: $weekday)))
