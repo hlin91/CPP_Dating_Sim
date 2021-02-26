@@ -106,6 +106,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 	]
 ]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="campus" position="1448,494" size="100,100">|body&gt;[
 	Time: $time
+	It&#39;s late afternoon but there&#39;s still much to do!
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
   	[[dine with jane doe-&gt;dining hall]]
@@ -116,7 +117,8 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 
 (if: ($time%11) is 8)[
 	(replace: ?body)[
-		[[evening-&gt;Evening on Campus]]
+		It&#39;s now evening
+		[[Time to chill!-&gt;Evening on Campus]]
 	]
 ]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="campus" position="1899,500" size="100,100">|body&gt;[
 	Time: $time
@@ -187,11 +189,28 @@ LEETCODE +1
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;The grind never ends&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="dorm" position="199,200" size="100,100">(set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="94,396" size="100,100">
+(set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="dorm" position="199,200" size="100,100">(if: $roommate is 0)[
+You come across your roommate, Chad. You feel bad for him because he&#39;s never lived up to his name as Chad. He&#39;s strugging with whether or not to go to class, so you decide to offer some sage advice.
+[[Offer sage advice-&gt;roommate thanks]]
+[[Go do something else-&gt;Morning Before School]] 
+]
+(else-if: $roommate is 1)[
+You once again encounter your roommate, Chad. He&#39;s looking much healthier since you last spoke to him. He asks you for some advice on the gym and getting ripped in the span of a couple days. You know a few pointers as a BRIC regular yourself.
+[[Give him a few pointers-&gt;roommate thanks]]
+[[Go do something else-&gt;Morning Before School]] 
+]
+(else-if: $roommate is 2)[
+You see your roommate Chad, looking more healthy and confident than ever! He&#39;s having problems with his girlfriend and romance is a particular strength of yours. Friends often come to you for your precise and intelligent advice.
+[[Give him some precise and intelligent advice-&gt;roommate thanks]]
+[[Go do something else-&gt;Morning Before School]] 
+]
+(else:)[
+You see your roommate Chad, or at least you think you do. He must be three feet taller than the last time you saw him and his very image seems to evade description. You decide against trying to give him any more advice.
+(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Uh oh&quot;, (history:)&#39;s ($histIndex))
+]</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="95,397" size="100,100">The year is 20XX. You&#39;re a student attending Cal Poly Pomona. Build relationships and skills in anticipation of a Friday calamity.
 
-[[Time to play!-&gt;Morning Before School]]
+[[Oh wow, okay-&gt;Morning Before School]]
 
 (set: $time to 0)
 (set: $DAY_TIME to 11)
@@ -606,7 +625,7 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 [[Time is running out-&gt;ending2]] 
 ]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="campus" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
 
-[[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="219,340" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
+[[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="422,143" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
