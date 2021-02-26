@@ -86,7 +86,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
 	]
-]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="campus" position="900,533" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="campus" position="852,529" size="100,100">|body&gt;[
 
 It&#39;s now U-Hour!
 
@@ -195,16 +195,19 @@ LEETCODE +1
 (link-goto: &quot;The grind never ends&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
 (set: $leetcode to $leetcode+2)</tw-passagedata><tw-passagedata pid="10" name="engage with roommate" tags="dorm" position="199,200" size="100,100">(if: $roommate is 0)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You come across your roommate, Chad. You feel bad for him because he&#39;s never lived up to his name as Chad. He&#39;s strugging with whether or not to go to class, so you decide to offer some sage advice.
 [[Offer sage advice-&gt;roommate thanks]]
 [[Go do something else-&gt;Morning Before School]] 
 ]
 (else-if: $roommate is 1)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You once again encounter your roommate, Chad. He&#39;s looking much healthier since you last spoke to him. He asks you for some advice on the gym and getting ripped in the span of a couple days. You know a few pointers as a BRIC regular yourself.
 [[Give him a few pointers-&gt;roommate thanks]]
 [[Go do something else-&gt;Morning Before School]] 
 ]
 (else-if: $roommate is 2)[
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;
 You see your roommate Chad, looking more healthy and confident than ever! He&#39;s having problems with his girlfriend and romance is a particular strength of yours. Friends often come to you for your precise and intelligent advice.
 [[Give him some precise and intelligent advice-&gt;roommate thanks]]
 [[Go do something else-&gt;Morning Before School]] 
@@ -214,7 +217,7 @@ You see your roommate Chad, looking more healthy and confident than ever! He&#39
 You see your roommate Chad, or at least you think you do. He must be three feet taller than the last time you saw him and his very image seems to evade description. You decide against trying to give him any more advice.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Uh oh&quot;, (history:)&#39;s ($histIndex))
-]</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="95,397" size="100,100">The year is 20XX. You&#39;re a student attending Cal Poly Pomona. Build relationships and skills in anticipation of a Friday calamity.
+]</tw-passagedata><tw-passagedata pid="11" name="Game Start" tags="" position="110,326" size="100,100">The year is 20XX. You&#39;re a student attending Cal Poly Pomona. Build relationships and skills in anticipation of a Friday calamity.
 
 [[Oh wow, okay-&gt;Morning Before School]]
 
@@ -337,15 +340,19 @@ You see your roommate Chad, or at least you think you do. He must be three feet 
 		&quot;critical thinking&quot;,
 		&quot;conflict resolution&quot;
 	)
-)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="store" position="525,1235" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
+)</tw-passagedata><tw-passagedata pid="12" name="popup book store" tags="store" position="525,1234" size="100,100">(unless: (history:) contains &quot;popup book store&quot;)[
 You take some time out of the day to go to CPP&#39;s famous popup book store. It&#39;s right outside the Bronco Student Center.
 
-You see a man wearing sunglasses and a red jacket. His nametag reads //Dr. Discourtesy//. You don&#39;t thin this man has a medical license. He has a strange beard.
+You see a man wearing sunglasses and a red jacket. His nametag reads //Dr. Discourtesy//. You don&#39;t think this man has a medical license. He has a strange beard.
+
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 
 &quot;Hi! I&#39;m trying to raise money to become a streamer on Twitch! Please be sure to buy as much as you can!&quot;
 ]
 (else:)[
 You return to the popup book store. Dr. Discourtesy greets you with a toothy grin.
+
+&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/doc.png&quot; class=character&gt;
 
 &quot;Please buy a lot so I can start my streaming career!&quot;
 ]
@@ -419,7 +426,7 @@ You see Jane in the distance and you decide to make your move.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Nah&quot;, (history:)&#39;s ($histIndex))
 
-]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="900,1083" size="100,100">Summarize and other stuff maybe?
+]</tw-passagedata><tw-passagedata pid="15" name="sleep" tags="dorm" position="900,1083" size="100,100">TODO: Summarize and other stuff maybe?
 [[new day-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="16" name="game dev class" tags="campus" position="900,901" size="100,100">(unless: (history:) contains &quot;game dev class&quot;)[
 You go to game dev class, which is being taught by Dr. Winterville. You definitely like Dr. Summerville better but he left the school abruptly last semester, and you need this class to graduate.
 ]
@@ -561,14 +568,12 @@ The remaining commandments are hard to understand, and the comments explaining t
 
 (set: $gd_correct to $gd_correct + 1)
 (set: $histIndex to (history:)&#39;s length - 1)
-(link-goto: &quot;I&#39;ll be a game developer yet!&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="campus" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
+(link-goto: &quot;I&#39;ll be a game developer yet!&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="campus" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
 
 &quot;No, I&#39;m sorry. That is not the correct answer.&quot;
 
 (set: $histIndex to (history:)&#39;s length -1)
-(link-goto: &quot;Better luck tomorrow!&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="30" name="ending" tags="campus" position="1597,1194" size="100,100">The campus is eerily quiet as you make your way back to your dorm. Just as you pass the CLA building, the earth beneath you begins to mildly shake. The shaking brings others to the outskirts of the CLA building, as it is widely regarded as the best place to be in the case of an earthquake. You are comforted by familiar faces.
+(link-goto: &quot;Better luck tomorrow!&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="30" name="ending" tags="campus" position="1597,1194" size="100,100">The campus is eerily quiet as you make your way back to your dorm. Just as you pass the CLA building, the earth beneath you begins to mildly shake. The shaking brings others to the outskirts of the CLA building, as it is widely regarded as the best place to be in the case of an earthquake. You are comforted by familiar faces.
 
 [[But then...-&gt;ending2]]</tw-passagedata><tw-passagedata pid="31" name="ending2" tags="" position="1601,1302" size="100,100">(unless: (history:) contains &quot;ending2&quot;)[
 The shaking grows harder and harder, and suddenly the earth below you opens up!
@@ -631,11 +636,12 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 [[Time is running out-&gt;ending2]] 
 ]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="campus" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
 
-[[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="" position="422,143" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
+[[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="dorm" position="422,143" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
-[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="702,694" size="100,100">You sit down across from Jane and make some small talk. What will you do?
+[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="702,694" size="100,100">&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
+You sit down across from Jane and make some small talk. What will you do?
 
 [[Compliment hair-&gt;compliment hair]]
 [[Brag about LeetCode-&gt;brag about leetcode]]
@@ -650,7 +656,7 @@ SIMP +1
 (set: $time to $time + 1)
 (set: $histIndex to (history:)&#39;s length-2)
 (link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="40" name="brag about leetcode" tags="campus" position="530,791" size="100,100">(if: $leetcode &gt; $jane_leetcode)[
-You regale Jane with your heroic tales of tacking LeetCode problems. She&#39;s totally digging it but you get the feeling that she&#39;ll have higher expectations next time.
+You regale Jane with your heroic tales of tackling LeetCode problems. She&#39;s totally digging it but you get the feeling that she&#39;ll have higher expectations next time.
 (set: $jane_leetcode to $jane_leetcode + 6)
 SIMP +3
 (set: $simp to $simp + 3)
@@ -664,7 +670,7 @@ SIMP +1
 
 (set: $time to $time + 1)
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="41" name="show off your gains" tags="campus" position="703,897" size="100,100">(if: $health &gt;= $jane_health)[
+(link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="41" name="show off your gains" tags="campus" position="734,901" size="100,100">(if: $health &gt;= $jane_health)[
 You arch your back and straighten your posture. All that time at the BRIC really paid off! Jane smiles and is probably uncomfortable but nonetheless impressed. However, you get the feeling that she won&#39;t be as impressed next time unless you manage to spend more time in the gym.
 
 SIMP +3
