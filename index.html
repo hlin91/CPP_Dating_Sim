@@ -48,19 +48,26 @@ tw-passage {
   height: 25vw;
   width: auto;
   text-align: center;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="dorm" position="301,499" size="100,100">(if: ($time/11 is 0))[(set: $weekday to &quot;Monday&quot;)](else-if: ($time/11 is 1))[(set: $weekday to &quot;Tuesday&quot;)](else-if: ($time/11 is 2))[(set: $weekday to &quot;Wednesday&quot;)](else-if: ($time/11 is 3))[(set: $weekday to &quot;Thursday&quot;)](else-if: ($time/11 is 4))[(set: $weekday to &quot;Friday&quot;)]
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="dorm" position="301,499" size="100,100">(if: ($time/$DAY_TIME is 0))[(set: $weekday to &quot;Monday&quot;)]
+(else-if: ($time/$DAY_TIME is 1))[(set: $weekday to &quot;Tuesday&quot;)]
+(else-if: ($time/$DAY_TIME is 2))[(set: $weekday to &quot;Wednesday&quot;)]
+(else-if: ($time/$DAY_TIME is 3))[(set: $weekday to &quot;Thursday&quot;)]
+(else-if: ($time/$DAY_TIME is 4))[(set: $weekday to &quot;Friday&quot;)]
+
 |body&gt;[
 Your roommmate is here.
 |chad&gt;[&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/roommate.png&quot; class=character&gt;]
 Time: $time
 Today is $weekday, and you&#39;ve got some time to kill before class. What would you like to do?
+
 [[leetcode-&gt;leetcode]]
 [[roommate-&gt;engage with roommate]]
 [[work-&gt;go to work]]
 [[kill time-&gt;kill time]]
 [[exercise-&gt;exercise]]
+
 ]
-(if: ($time%11) is 1)[
+(if: $time % $DAY_TIME is $MORNING_BEFORE)[
 	(replace: ?body)[
 		Seems like that&#39;s all you&#39;ve got time for today. Time to get a move on!
 		[[Go to school-&gt;Morning at School]]
@@ -81,7 +88,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 [[go to work-&gt;go to work]]
 ]
 
-(if: ($time%11) is 4)[
+(if: ($time%$DAY_TIME) is $MORNING_SCHOOL)[
 	(replace: ?body)[
 		Morning is over, and it&#39;s now U-Hour! Relax before the rest of your day.
 		[[U-Hour-&gt;U-Hour]]
@@ -103,8 +110,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 	]
 ]
 
-
-(if: ($time%11) is 5)[
+(if: ($time%$DAY_TIME) is $U_HOUR)[
 	(replace: ?body)[
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
@@ -120,7 +126,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 ]
 
 
-(if: ($time%11) is 8)[
+(if: ($time%$DAY_TIME) is $AFTERNOON)[
 	(replace: ?body)[
 		It&#39;s now evening
 		[[Time to chill!-&gt;Evening on Campus]]
@@ -134,7 +140,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 ]
 
 
-(if: ($time%11) is 0)[
+(if: ($time%$DAY_TIME) is 0)[
 	(replace: ?body)[
 		[[go to bed-&gt;sleep]]
 	]
@@ -222,8 +228,16 @@ You see your roommate Chad, or at least you think you do. He must be three feet 
 [[Oh wow, okay-&gt;Morning Before School]]
 
 (set: $time to 0)
-(set: $DAY_TIME to 11)
-(set: $TOTAL_TIME to $DAY_TIME * 5)
+
+(set: $MORNING_BEFORE to 1)
+(set: $MORNING_SCHOOL to $MORNING_BEFORE + 2)
+(set: $U_HOUR to $MORNING_SCHOOL + 1)
+(set: $AFTERNOON to $U_HOUR + 2)
+(set: $EVENING to $AFTERNOON + 2)
+
+(set: $DAY_TIME to $EVENING)
+
+(set: $TOTAL_TIME to $EVENING * 5)
 
 (set: $jane_health to 4)
 (set: $jane_leetcode to 4)
@@ -641,7 +655,7 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 [[Time is running out-&gt;ending2]] 
 ]</tw-passagedata><tw-passagedata pid="36" name="ending3" tags="campus" position="1650,1599" size="100,100">Stumbling back onto stable ground, you gather with your friends and acquantainces. You exchange hurried glances when suddenly, the shaking begins anew! You all manage to get to higher ground and watch as the CLA building falls into the pit of the earth.
 
-[[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="dorm" position="422,143" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
+[[Maybe the true treasure was the friends we made along the way-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="37" name="roommate thanks" tags="dorm" position="389,190" size="100,100">Your roommate Chad listens intently as you talk his ear off. He slowly nods and scratches his chin. Suddenly, his eyes light up.
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
@@ -776,7 +790,7 @@ Jane, the love of your life. You and her fell madly in love over the course of y
 
 [[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="campus" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
 
-[[Play again-&gt;Game Start]] </tw-passagedata></tw-storydata>
+[[Play again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="50" name="testing" tags="" position="404,705" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
