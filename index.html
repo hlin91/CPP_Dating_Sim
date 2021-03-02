@@ -38,7 +38,7 @@ body, tw-story {
 }
 
 tw-passage {
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.4);
   border-radius: 8px;
   padding: 5%;
   margin: auto;
@@ -48,7 +48,76 @@ tw-passage {
   height: 25vw;
   width: auto;
   text-align: center;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Morning Before School" tags="dorm" position="301,499" size="100,100">(if: ($time/$DAY_TIME is 0))[(set: $weekday to &quot;Monday&quot;)]
+}
+
+#sidebar {
+  font-size: 18px;
+  line-height: 1.5em;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 8px;
+  padding: 25%;
+  margin: auto;
+}
+
+.sidebar.label {
+  text-align: left;
+  float: left;
+  width: 100%;
+  text-transform: capitalize;
+}
+
+.sidebar.label:after {
+  content: ": ";
+}
+
+.sidebar.value {
+  font-weight: bold;
+  text-align: right;
+  float: right;
+}
+
+.sidebar.value.money:before {
+  content: "$";
+  font-weight: bold;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Twine sidebar
+ *
+ * created by Avram, www.avramovic.info
+ */
+
+if (!window.harlowe){
+	window.harlowe = {"State": State};
+	window.harlowe.stats = {
+		"money": 0, 
+		"leetcode": 0,
+		"health": 0,
+		"simp": 0
+	}; // <- this is all you need to change
+	window.harlowe.oldValues = '';
+}
+
+window.setInterval(function() {
+	if ($('#sidebar').length == 0) {
+		$('tw-sidebar').append('<div id="sidebar"></div>');
+	}
+	
+	var html = '';
+	var newValues = '';
+  
+	for (var item in window.harlowe.stats) {
+		var defaultValue = window.harlowe.stats[item];
+		var hasItem = typeof window.harlowe.State.variables[item] !== "undefined";				
+		if (hasItem || defaultValue !== false) {
+			var value = hasItem ? window.harlowe.State.variables[item] : defaultValue;
+			newValues += ""+value;
+			html += '<div class="sidebar item '+item+'"><span class="sidebar label '+item+'">'+item+'</span><span class="sidebar value '+item+'">'+value+'</span>';	
+		}		
+	}
+	
+//	if (window.harlowe.oldValues != newValues) {
+		window.harlowe.oldValues = newValues;
+		$('#sidebar').html(html);
+//	}
+}, 500);</script><tw-passagedata pid="1" name="Morning Before School" tags="dorm" position="301,499" size="100,100">(if: ($time/$DAY_TIME is 0))[(set: $weekday to &quot;Monday&quot;)]
 (else-if: ($time/$DAY_TIME is 1))[(set: $weekday to &quot;Tuesday&quot;)]
 (else-if: ($time/$DAY_TIME is 2))[(set: $weekday to &quot;Wednesday&quot;)]
 (else-if: ($time/$DAY_TIME is 3))[(set: $weekday to &quot;Thursday&quot;)]
@@ -680,6 +749,7 @@ You sit down across from Jane and make some small talk. What will you do?
 
 SIMP +1
 
+(set: $simp to $simp + 1)
 (set: $time to $time + 1)
 (set: $histIndex to (history:)&#39;s length-2)
 (link-goto: &quot;Simpin ain&#39;t easy&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="40" name="brag about leetcode" tags="campus" position="530,791" size="100,100">(if: $leetcode &gt; $jane_leetcode)[
