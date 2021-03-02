@@ -115,23 +115,26 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 		U-Hour comes and goes, and now it&#39;s time for the afternoon slog.
 		[[Afternoon on Campus-&gt;Afternoon on Campus]]
 	]
-]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="campus" position="1448,494" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="4" name="Afternoon on Campus" tags="campus" position="1439,507" size="100,100">|body&gt;[
 	Time: $time
 	It&#39;s late afternoon but there&#39;s still much to do!
   	[[leetcode-&gt;leetcode]]
   	[[exercise-&gt;exercise]]
   	[[dine with jane doe-&gt;dining hall]]
+	[[cla building-&gt;cla building]]
 	(unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
   	[[library-&gt;library]]
 ]
 
 
-(if: ($time%$DAY_TIME) is $AFTERNOON)[
+(if: ($time%$DAY_TIME) is 0)[
 	(replace: ?body)[
-		It&#39;s now evening
-		[[Time to chill!-&gt;Evening on Campus]]
+		The day is over for now. Go home, get some food, and get ready for tomorrow!
+		[[Sleeptime awaits!-&gt;sleep]]
 	]
-]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="campus" position="1899,500" size="100,100">|body&gt;[
+]</tw-passagedata><tw-passagedata pid="5" name="Evening on Campus" tags="campus" position="1934,442" size="100,100">
+&lt;!--
+|body&gt;[
 	Time: $time
   	[[leetcode-&gt;leetcode]]
 	[[exercise-&gt;exercise]]
@@ -144,7 +147,8 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
 	(replace: ?body)[
 		[[go to bed-&gt;sleep]]
 	]
-]</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="leetcode" position="298,701" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
+]
+--&gt;</tw-passagedata><tw-passagedata pid="6" name="kill time" tags="leetcode" position="298,701" size="100,100">You spend part of the morning looking at memes through Harvey&#39;s patented meme stream site http://memepoly.com. You estimate that an hour has passed.
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Welp, that&#39;s that.&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)</tw-passagedata><tw-passagedata pid="7" name="exercise" tags="exercise" position="701,0" size="100,100">(set: _noun_choice to (random: 1, $exercise_noun&#39;s length))
@@ -233,11 +237,10 @@ You see your roommate Chad, or at least you think you do. He must be three feet 
 (set: $MORNING_SCHOOL to $MORNING_BEFORE + 2)
 (set: $U_HOUR to $MORNING_SCHOOL + 1)
 (set: $AFTERNOON to $U_HOUR + 2)
-(set: $EVENING to $AFTERNOON + 2)
 
-(set: $DAY_TIME to $EVENING)
+(set: $DAY_TIME to $AFTERNOON)
 
-(set: $TOTAL_TIME to $EVENING * 5)
+(set: $TOTAL_TIME to $AFTERNOON * 5)
 
 (set: $jane_health to 4)
 (set: $jane_leetcode to 4)
@@ -457,50 +460,55 @@ In game dev, you take your seat and wait for class to begin. Dr. Winterville bur
 
 (if: $gd_attendance&#39;s length is 1)
 [
-Question 1
+What is the time complexity of quicksort?
 
-[[Correct answer-&gt;correct]]
-[[Incorrect answer-&gt;incorrect]]
+[[O(nlogn)-&gt;correct]]
+[[O(logn)-&gt;incorrect]]
 ]
 (if: $gd_attendance&#39;s length is 2)
 [
-Question 2
+One purpose of preprocessor commands is to tell the preprocessor to make substitutions in code
 
-[[Correct answer-&gt;correct]]
-[[Incorrect answer-&gt;incorrect]]
+[[True-&gt;correct]]
+[[False-&gt;incorrect]]
 ]
 (if: $gd_attendance&#39;s length is 3)
 [
-Question 3
+The use of a precision modifier when displaying a floating point value will result in truncating all digits beyond the specified precision value
 
-[[Correct answer-&gt;correct]]
-[[Incorrect answer-&gt;incorrect]]
+[[True-&gt;correct]]
+[[False-&gt;incorrect]]
 ]
 (if: $gd_attendance&#39;s length is 4)
 [
-Question 4
+The compound assignment operator (/=) has a higher level of precedence than the addition operator
 
-[[Correct answer-&gt;correct]]
-[[Incorrect answer-&gt;incorrect]]
+[[True-&gt;incorrect]]
+[[False-&gt;correct]]
 ]
 (if: $gd_attendance&#39;s length is 5)
 [
-Question 5
+Data sent from the calling function to the function being called will be received in the same order in which it was passed
 
-[[Correct answer-&gt;correct]]
-[[Incorrect answer-&gt;incorrect]]
+[[True-&gt;correct]]
+[[False-&gt;incorrect]]
 ]
 
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="library" position="1400,100" size="100,100">(set: $histIndex to (history:)&#39;s length)
+(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="library" position="1400,100" size="100,100">
+
+(set: $histIndex to (history:)&#39;s length)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="campus" position="1899,700" size="100,100">You make your way to the CLA building, the most structurally sound structure on campus. Nothing goes on in here anymore because the administration determined it was so structurally sound.
+
+[[admire the building-&gt;admire the building]]
+
+[[examine the building-&gt;examine the building]]
+
+(set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)
-(set: $leetcode to $leetcode+1)
-(set: $school to $school+1)</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="campus" position="1899,700" size="100,100">(set: $histIndex to (history:)&#39;s length)
-(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to $time+1)</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="store" position="710,1434" size="100,100">(if: $money &gt;= 4)[
+</tw-passagedata><tw-passagedata pid="19" name=" buy starting strength" tags="store" position="710,1434" size="100,100">(if: $money &gt;= 4)[
 You purchase Starting Strength
 (set: $inv to $inv + (a: &quot;ss&quot;))
 [[Sweet.-&gt;book store vanishes]]
@@ -790,7 +798,26 @@ Jane, the love of your life. You and her fell madly in love over the course of y
 
 [[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="campus" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
 
-[[Play again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="50" name="testing" tags="" position="404,705" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
+[[Play again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="50" name="testing" tags="" position="404,705" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="51" name="admire the building" tags="" position="1899,850" size="100,100">Somehow, the act of admiring this building makes you feel like a simp
+
+SIMP +2
+
+(set: $histIndex to (history:)&#39;s length-1)
+(link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
+(set: $time to time + 1)</tw-passagedata><tw-passagedata pid="52" name="examine the building" tags="" position="2019,850" size="100,100">The entrance is definitely locked. However, you notice a small keyhole in the door.
+
+(unless: $inv contains &quot;key&quot;)[
+You wonder to yourself what kind of object could possibly fit in a key hole. You continue to stare at the key hole.
+]
+(else:)[
+You remember you have a key, molded from the magic of the robed ones.
+[[use the key-&gt;use the key]]
+]
+
+(set: $histIndex to (history:)&#39;s length-1)
+(link-goto: &quot;I&#39;m out of here&quot;, (history:)&#39;s ($histIndex))
+</tw-passagedata><tw-passagedata pid="53" name="use the key" tags="" position="2019,1000" size="100,100">In a stroke of brilliance, you take the key and put it into the keyhole. Your victory is short-lived, as nothing happens.
+[[...turn the key?-&gt;turn the key]]</tw-passagedata><tw-passagedata pid="54" name="turn the key" tags="" position="2019,1150" size="100,100">Your ceaselessly amazing brilliance </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
