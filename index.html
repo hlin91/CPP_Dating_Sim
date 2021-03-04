@@ -960,7 +960,8 @@ MONEY -2
 ]
 
 (set: $histIndex to (history:)&#39;s length-1)
-(link-goto: &quot;I hate the library&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="63" name="billy" tags="library" position="1694,181" size="100,100">You stare deeply into the headgear of Billy the Bronco. You make out the faint outline of a human within, although this could just be your mind playing tricks on you. He smells like onions. You get the feeling that it&#39;s time to make your move.
+(link-goto: &quot;I hate the library&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time +1)</tw-passagedata><tw-passagedata pid="63" name="billy" tags="library" position="1694,181" size="100,100">You stare deeply into the headgear of Billy the Bronco. You make out the faint outline of a human within, although this could just be your mind playing tricks on you. He smells like onions. You get the feeling that it&#39;s time to make your move.
 
 (if: $degree is 0)[[[&quot;Can you help me expedite my degree processing?&quot;-&gt;expedite degree]]]
 [[&quot;N-neigh??&quot;-&gt;neigh]]
