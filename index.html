@@ -965,21 +965,24 @@ MONEY -2
 (if: $degree is 0)[[[&quot;Can you help me expedite my degree processing?&quot;-&gt;expedite degree]]]
 [[&quot;N-neigh??&quot;-&gt;neigh]]
 [[&quot;I&#39;m not really into furries&quot;-&gt;not into furries]]
-</tw-passagedata><tw-passagedata pid="64" name="neigh" tags="" position="1544,331" size="100,100">You neigh with all your might, drawn from years of experience as an equestrian. Billy neighs back and there is a moment of tension.
+</tw-passagedata><tw-passagedata pid="64" name="neigh" tags="library" position="1544,331" size="100,100">You neigh with all your might, drawn from years of experience as an equestrian. Billy neighs back and there is a moment of tension.
 
 (set: $billy to $billy + 2)
 
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;I&#39;m outta here&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="65" name="not into furries" tags="" position="1694,331" size="100,100">You express your disdain for furries, especially those who interrupt your library beauty sleep and smell like onions. Billy neighs sadly, as if he understands the English words you speak. You know this isn&#39;t the case, since furries are illiterate.
+(link-goto: &quot;I&#39;m outta here&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time +1)</tw-passagedata><tw-passagedata pid="65" name="not into furries" tags="library" position="1694,331" size="100,100">You express your disdain for furries, especially those who interrupt your library beauty sleep and smell like onions. Billy neighs sadly, as if he understands the English words you speak. You know this isn&#39;t the case, since furries are illiterate.
 
 (set: $billy to $billy -2)
 
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;No more furries on my campus!&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="66" name="expedite degree" tags="" position="1844,331" size="100,100">You understand that Billy is in charge of graduation for Cal Poly Pomona students. You request that he would expedite your process for graduation. He neighs in acceptance, but he doesn&#39;t write it down so you&#39;re sure he&#39;ll forget.
+(link-goto: &quot;No more furries on my campus!&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time +1)</tw-passagedata><tw-passagedata pid="66" name="expedite degree" tags="library" position="1844,331" size="100,100">You understand that Billy is in charge of graduation for Cal Poly Pomona students. You request that he would expedite your process for graduation. He neighs in acceptance, but he doesn&#39;t write it down so you&#39;re sure he&#39;ll forget.
 
 (set: $degree to 1)
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;Please let me out of this campus, Billy.&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="67" name="billy ending" tags="" position="2114,1858.9544677734375" size="100,100">(if: $billy &lt;= -2)[
+(link-goto: &quot;Please let me out of this campus, Billy.&quot;, (history:)&#39;s ($histIndex))
+(set: $time to $time +1)</tw-passagedata><tw-passagedata pid="67" name="billy ending" tags="" position="2114,1858.9544677734375" size="100,100">(if: $billy &lt;= -2)[
 You never saw Billy the Bronco after college. Sometimes, you see the silhouette of a man in a fur suit around your home, and later find a bag of dog droppings on your front porch.
 ]
 (else-if: $billy is 0)[
