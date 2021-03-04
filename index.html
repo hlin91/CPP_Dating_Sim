@@ -122,6 +122,7 @@ U-Hour is your favorite part of the day. Weird stuff always happens during U-Hou
   	[[exercise-&gt;exercise]]
   	[[dine with jane doe-&gt;dining hall]]
 	[[cla building-&gt;cla building]]
+	[[go to work-&gt;go to work]]
 	(unless: $gd_attendance contains $weekday)[[[game dev-&gt;game dev class]]]
   	[[library-&gt;library]]
 ]
@@ -244,9 +245,11 @@ You see your roommate Chad, or at least you think you do. He must be three feet 
 
 (set: $jane_health to 4)
 (set: $jane_leetcode to 4)
+(set: $degree to 0)
 
 (set: $roommate to 0)
 (set: $ROOMMATE_THRES to 2)
+(set: $billy to 0)
 
 (set: $SIMP_THRES to 12)
 
@@ -497,7 +500,14 @@ Data sent from the calling function to the function being called will be receive
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
 (set: $time to $time+1)
-(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="library" position="1400,100" size="100,100">
+(set: $school to $school+2)</tw-passagedata><tw-passagedata pid="17" name="library" tags="library" position="1319,155" size="100,100">(unless: (history:) contains &quot;library&quot;)[
+You walk into the library, the finest napping institution on campus. You&#39;ve always loved the library as someone who loves books, words, and punctuation. The library is full of these things!
+]
+
+You notice Billy the Bronco in full gear sitting at a study table. His fur suit looks very uncomfortable. He motions to you as if to invite you to sit with him.
+
+[[Take a nap-&gt;nap]]
+[[Sit with Billy-&gt;billy]]
 
 (set: $histIndex to (history:)&#39;s length)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="18" name="cla building" tags="campus" position="1899,700" size="100,100">You make your way to the CLA building, the most structurally sound structure on campus. Nothing goes on in here anymore because the administration determined it was so structurally sound.
@@ -616,6 +626,9 @@ Who will you reach out to?
 [[Reach out to Jane Doe-&gt;jane doe helps]]
 [[Reach out to Chad-&gt;chad helps]]
 [[Reach out to Dr. Disrespect-&gt;dd helps]]
+if(:$inv contains &quot;twine&quot;)[
+[[Make use of the twine-&gt;twine ending]]
+]
 [[Leap into the pit-&gt;ending unknown]]</tw-passagedata><tw-passagedata pid="32" name="winterville helps" tags="campus" position="1601,1452" size="100,100">You call to Dr. Winterville who is standing nearby.
 &lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 (if: $gamedev_attendance&#39;s length &gt;= 3)[
@@ -667,7 +680,7 @@ You call for your roommate, who is standing nearby. He rushes to your aid, but h
 &quot;It all makes sense now! I know what I have to do! Thanks Billy, you&#39;re the best!&quot;
 (set:$time to $time + 1)
 (set:$roommate to $roommate + 1)
-[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="702,694" size="100,100">&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
+[[All in a day&#39;s work, Chad-&gt;Morning Before School]] </tw-passagedata><tw-passagedata pid="38" name="dining hall jane" tags="campus" position="710,698" size="100,100">&lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/jane.png&quot; class=character&gt;
 You sit down across from Jane and make some small talk. What will you do?
 
 [[Compliment hair-&gt;compliment hair]]
@@ -746,7 +759,13 @@ You&#39;ve kept in touch over the years with Chad, and he&#39;s doing about as w
 But how could you not reminisce about Chad? He became everything you ever wanted to be. He got a job at Google and his major was in History. Legends say he went to the BRIC only twice and managed to put on 18 pounds of pure muscle each time. Legend has it that Chad, your roommate, so embodied the form of the ideal man that he is the reason the name &quot;Chad&quot; is such a meme.
 ]
 
-[[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="campus" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
+[[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="campus" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. 
+
+(unless: (history:) contains &quot;slo ending&quot;)[
+The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
+(else:)[
+You&#39;re lauded as a hero on campus for moving the fault underneath your sister school. They&#39;re not too pleased about it but it&#39;s a &quot;every polytechnic for themselves&quot; world out there.
+]
 [[Very spooky. What happened to all of them anyways?-&gt;roommate ending]]</tw-passagedata><tw-passagedata pid="46" name="winterville ending" tags="campus" position="1957,1726" size="100,100">You spend some time thinking about Dr. Winterville...
 
 (if: $class_attendance is 0)[
@@ -798,6 +817,10 @@ Jane, the love of your life. You and her fell madly in love over the course of y
 
 [[So that&#39;s that, then.-&gt;final ending]]</tw-passagedata><tw-passagedata pid="49" name="final ending" tags="campus" position="1432,1977" size="100,100">Yup, that&#39;s the end of your college career! Amazing how it flies by, almost seems like that week your Freshman year was all there was.
 
+(unless: $degree is 1)[
+By the way, you never graduated. You should probably get that figured out.
+]
+
 [[Play again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="50" name="testing" tags="" position="404,705" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="51" name="admire the building" tags="" position="1899,850" size="100,100">Somehow, the act of admiring this building makes you feel like a simp
 
 SIMP +2
@@ -817,7 +840,77 @@ You remember you have a key, molded from the magic of the robed ones.
 (set: $histIndex to (history:)&#39;s length-1)
 (link-goto: &quot;I&#39;m out of here&quot;, (history:)&#39;s ($histIndex))
 </tw-passagedata><tw-passagedata pid="53" name="use the key" tags="" position="2019,1000" size="100,100">In a stroke of brilliance, you take the key and put it into the keyhole. Your victory is short-lived, as nothing happens.
-[[...turn the key?-&gt;turn the key]]</tw-passagedata><tw-passagedata pid="54" name="turn the key" tags="" position="2019,1150" size="100,100">Your ceaselessly amazing brilliance </tw-passagedata></tw-storydata>
+[[...turn the key?-&gt;turn the key]]</tw-passagedata><tw-passagedata pid="54" name="turn the key" tags="" position="2019,1150" size="100,100">Your ceaselessly amazing brilliance pays off once more as you turn the key. But now what?
+[[Open the door-&gt;open door]]</tw-passagedata><tw-passagedata pid="55" name="open door" tags="" position="2179,1122" size="100,100">You open the door and find two creatures. They seem intelligent. To your surprise, they begin to speak.
+
+(set: $inv to $inv - (a: &quot;key&quot;))
+
+&quot;Greetings mortal, we are the developers of this game. We have taken a form that is understandable to your human mind.&quot;
+
+You cringe as you read the previous line.
+
+[[So, what&#39;s this all about?-&gt;all about]]</tw-passagedata><tw-passagedata pid="56" name="all about" tags="" position="2179,1272" size="100,100">The creatures answer your question.
+
+&quot;For your dedication to going where you shouldn&#39;t go, we&#39;d like to reward you with something special.&quot;
+
+You continue to cringe as the creatures hand you what looks to be a ball of twine.
+
+&#39;&#39;Received Twine&#39;&#39;
+
+[[Alrighty then-&gt;Afternoon on Campus]]</tw-passagedata><tw-passagedata pid="57" name="twine ending" tags="" position="1396,1299" size="100,100">You look down at the twine you got from those cringey cats. A world of possibility is open to you, but there&#39;s not much time left. What would you like to do?
+
+[[Move the fault line to Cal Poly SLO-&gt;slo ending]]
+[[Make this game into &#39;The Uncle Who Works for Nintendo&#39;-&gt;nintendo ending]]
+[[Get the good ending-&gt;good ending]]</tw-passagedata><tw-passagedata pid="58" name="slo ending" tags="" position="1437,1799" size="100,100">You do some sick finger tricks using the twine and the fault line vanishes completely! You will it to appear under Cal Poly SLO instead, sparing the CLA building and those around you.
+
+[[Excellent news!-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="59" name="nintendo ending" tags="" position="1361,1449" size="100,100">You decide that this game is not the game you would like to play after all. You open up your browser and go to https://ztul.itch.io/the-uncle-who-works-for-nintendo to play &quot;The Uncle Who Works for Nintendo&quot;. You remember playing it once before and enjoying it.
+
+You play for a good amount of time and get all of the endings. You forget all about &quot;The Fault in Our Campus&quot; as time goes on.
+
+[[Wow, this ending sucks-&gt;complaint]]</tw-passagedata><tw-passagedata pid="60" name="good ending" tags="" position="1438,1651" size="100,100">You manage to twist the twine about in some fashion that you determine to be good. You get the feeling that life is about to be much better. You feel the sense of pride and accomplishment as your life improves in a matter of nanoseconds.
+(set: $simp to 100)
+(set: $money to 100)
+(set: $health to 100)
+(set: $gd_attendance to 5)
+(set: $roommate to 0)
+
+[[get the good ending-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="61" name="complaint" tags="" position="1226,1605" size="100,100">Listen, pal, if you didn&#39;t want to play &quot;The Uncle Who Works at Nintendo&quot;, why&#39;d you click that option? Anyways...
+
+[[start again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="62" name="nap" tags="" position="1588,38" size="100,100">You decide to take a nap. When you wake up, your wallet is noticeably lighter.
+
+(if: $money &lt; 2)[
+As it turns out, your wallet was always light. Go get a job!
+]
+(else:)[
+Let this be a lesson against sleeping in public locations.
+
+MONEY -2
+(set: $money to $money - 2)
+]
+
+(set: $histIndex to (history:)&#39;s length-1)
+(link-goto: &quot;I hate the library&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="63" name="billy" tags="" position="1694,181" size="100,100">You stare deeply into the headgear of Billy the Bronco. You make out the faint outline of a human within, although this could just be your mind playing tricks on you. He smells like onions. You get the feeling that it&#39;s time to make your move.
+
+(if: $degree is 0)[
+[[&quot;Can you help me expedite my degree processing?&quot;-&gt;expedite degree]]
+]
+[[&quot;N-neigh??&quot;-&gt;neigh]]
+[[&quot;I&#39;m not really into furries&quot;-&gt;not into furries]]
+</tw-passagedata><tw-passagedata pid="64" name="neigh" tags="" position="1544,331" size="100,100">You neigh with all your might, drawn from years of experience as an equestrian. Billy neighs back and there is a moment of tension.
+
+(set: $billy to $billy + 2)
+
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;I&#39;m outta here&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="65" name="not into furries" tags="" position="1694,331" size="100,100">You express your disdain for furries, especially those who interrupt your library beauty sleep and smell like onions. Billy neighs sadly, as if he understands the English words you speak. You know this isn&#39;t the case, since furries are illiterate.
+
+(set: $billy to $billy -2)
+
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;No more furries on my campus!&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="66" name="expedite degree" tags="" position="1844,331" size="100,100">You understand that Billy is in charge of graduation for Cal Poly Pomona students. You request that he would expedite your process for graduation. He neighs in acceptance, but he doesn&#39;t write it down so you&#39;re sure he&#39;ll forget.
+
+(set: $degree to 1)
+(set: $histIndex to (history:)&#39;s length-2)
+(link-goto: &quot;Please let me out of this campus, Billy.&quot;, (history:)&#39;s ($histIndex))</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
