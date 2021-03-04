@@ -626,6 +626,7 @@ Who will you reach out to?
 [[Reach out to Jane Doe-&gt;jane doe helps]]
 [[Reach out to Chad-&gt;chad helps]]
 [[Reach out to Dr. Disrespect-&gt;dd helps]]
+[[Reach out to Billy-&gt;billy &quot;helps&quot;]]
 if(:$inv contains &quot;twine&quot;)[
 [[Make use of the twine-&gt;twine ending]]
 ]
@@ -796,7 +797,7 @@ Dr. Discourtesy! He managed to become a moderately successful streamer on Twitch
 Dr. Discourtesy! After you bought out his shop, he had all the MONEY he needed to get his career off the ground. You two stayed friends throughout all these years. He was around your family so much that he even met and fell in love with your sister! Their wedding was such a happy occasion, and you were the best man. Your sister couldn&#39;t have married a more faithful, devoted man than Dr. Discourtesy!
 ]
 
-[[Well...what about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="campus" position="2119,1865" size="100,100">You spend some time thinking about Jane...
+[[Well...what about Billy?-&gt;billy ending]]</tw-passagedata><tw-passagedata pid="48" name="jane ending" tags="campus" position="2124,1986" size="100,100">You spend some time thinking about Jane...
 
 (if: $roommate &gt;= 3)[
 &lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/chad.png&quot; class=character&gt;
@@ -910,7 +911,21 @@ MONEY -2
 
 (set: $degree to 1)
 (set: $histIndex to (history:)&#39;s length-2)
-(link-goto: &quot;Please let me out of this campus, Billy.&quot;, (history:)&#39;s ($histIndex))</tw-passagedata></tw-storydata>
+(link-goto: &quot;Please let me out of this campus, Billy.&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="67" name="billy ending" tags="" position="2114,1858.9544677734375" size="100,100">(if: $billy &lt;= -2)[
+You never saw Billy the Bronco after college. Sometimes, you see the silhouette of a man in a fur suit around your home, and later find a bag of dog droppings on your front porch.
+]
+(else-if: $billy is 0)[
+You never saw Billy the Bronco after college. Now and then you see a horse and think of all the great memories you had in undergrad.
+]
+(else:)[
+You see Billy almost daily. Your interest in furries was magnetic and now he lives in your backyard, subsisting entirely on grass clippings. By the way, this is a guy in a fur suit, not an actual horse.
+]
+
+[[Wow, very cool! What about Jane?-&gt;jane ending]]</tw-passagedata><tw-passagedata pid="68" name="billy &quot;helps&quot;" tags="" position="1955,1456" size="100,100">Billy shakes his horse mask to indicate that he cannot help you.
+
+&#39;&#39;Billy&#39;s suit is not conducive to helping people out of pits.&#39;&#39;
+
+[[Time is running out-&gt;ending2]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
