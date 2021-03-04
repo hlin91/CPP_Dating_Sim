@@ -56,6 +56,8 @@ tw-passage {
   background-color: rgba(0,0,0,0.4);
   border-radius: 8px;
   padding: 25%;
+  margin: auto;
+
 }
 
 .sidebar.label {
@@ -85,7 +87,12 @@ tw-passage {
 
 if (!window.harlowe){
 	window.harlowe = {"State": State};
-	window.harlowe.stats = {"money": 0, "stamina": false}; // <- this is all you need to change
+	window.harlowe.stats = {
+		"money": 0,
+		"simp": 0,
+		"leetcode":0,
+		"health":0
+												 }; // <- this is all you need to change
 	window.harlowe.oldValues = '';
 }
 
@@ -940,7 +947,7 @@ You play for a good amount of time and get all of the endings. You forget all ab
 
 [[get the good ending-&gt;surface ending]]</tw-passagedata><tw-passagedata pid="61" name="complaint" tags="" position="1226,1605" size="100,100">Listen, pal, if you didn&#39;t want to play &quot;The Uncle Who Works at Nintendo&quot;, why&#39;d you click that option? Anyways...
 
-[[start again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="62" name="nap" tags="" position="1588,38" size="100,100">You decide to take a nap. When you wake up, your wallet is noticeably lighter.
+[[start again-&gt;Game Start]] </tw-passagedata><tw-passagedata pid="62" name="nap" tags="library" position="1588,38" size="100,100">You decide to take a nap. When you wake up, your wallet is noticeably lighter.
 
 (if: $money &lt; 2)[
 As it turns out, your wallet was always light. Go get a job!
@@ -953,11 +960,9 @@ MONEY -2
 ]
 
 (set: $histIndex to (history:)&#39;s length-1)
-(link-goto: &quot;I hate the library&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="63" name="billy" tags="" position="1694,181" size="100,100">You stare deeply into the headgear of Billy the Bronco. You make out the faint outline of a human within, although this could just be your mind playing tricks on you. He smells like onions. You get the feeling that it&#39;s time to make your move.
+(link-goto: &quot;I hate the library&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="63" name="billy" tags="library" position="1694,181" size="100,100">You stare deeply into the headgear of Billy the Bronco. You make out the faint outline of a human within, although this could just be your mind playing tricks on you. He smells like onions. You get the feeling that it&#39;s time to make your move.
 
-(if: $degree is 0)[
-[[&quot;Can you help me expedite my degree processing?&quot;-&gt;expedite degree]]
-]
+(if: $degree is 0)[[[&quot;Can you help me expedite my degree processing?&quot;-&gt;expedite degree]]]
 [[&quot;N-neigh??&quot;-&gt;neigh]]
 [[&quot;I&#39;m not really into furries&quot;-&gt;not into furries]]
 </tw-passagedata><tw-passagedata pid="64" name="neigh" tags="" position="1544,331" size="100,100">You neigh with all your might, drawn from years of experience as an equestrian. Billy neighs back and there is a moment of tension.
