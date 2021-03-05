@@ -168,6 +168,7 @@ It is still the morning of $weekday, but now you&#39;re at the Bronco Student Ce
 		[[U-Hour-&gt;U-Hour]]
 	]
 ]</tw-passagedata><tw-passagedata pid="3" name="U-Hour" tags="campus" position="852,529" size="100,100">|body&gt;[
+Time: $time
 
 It&#39;s now U-Hour!
 
@@ -646,8 +647,7 @@ You look back down at the hunk of silicon to find now it has been transformed in
 [[Man, this school is weird-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="25" name="blessing" tags="campus" position="968,251" size="100,100">The hooded figure removes his hood and stares into your soul. You feel something unlock within you, and you now know the solution to that one LeetCode problem you were stuck on yesterday.
 
 LEETCODE +4
-(set: $leetcode to $leetcode + 4)
-
+(set: $leetcode to $leetcode + 4)\
 (set: $time to $time + 1)
 [[Thank you wizard!-&gt;U-Hour]]</tw-passagedata><tw-passagedata pid="26" name="scs explanation" tags="campus" position="1117,255" size="100,100">You ask the robed figure who they are, and what is going on here.
 
@@ -891,9 +891,10 @@ By the way, you never graduated. You should probably get that figured out.
 
 SIMP +2
 
+(set: $simp to $simp + 2)
 (set: $histIndex to (history:)&#39;s length-1)
 (link-goto: &quot;Back&quot;, (history:)&#39;s ($histIndex))
-(set: $time to time + 1)</tw-passagedata><tw-passagedata pid="52" name="examine the building" tags="campus" position="2019,850" size="100,100">The entrance is definitely locked. However, you notice a small keyhole in the door.
+(set: $time to $time + 1)</tw-passagedata><tw-passagedata pid="52" name="examine the building" tags="campus" position="2019,850" size="100,100">The entrance is definitely locked. However, you notice a small keyhole in the door.
 
 (unless: $inv contains &quot;key&quot;)[
 You wonder to yourself what kind of object could possibly fit in a key hole. You continue to stare at the key hole.
