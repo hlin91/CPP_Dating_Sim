@@ -323,10 +323,9 @@ You see your roommate Chad, or at least you think you do. He must be three feet 
 (set: $degree to 0)
 
 (set: $roommate to 0)
-(set: $ROOMMATE_THRES to 2)
 (set: $billy to 0)
 
-(set: $SIMP_THRES to 12)
+(set: $SIMP_THRESHOLD to 12)
 
 (set: $leetcode to 0)
 (set: $health to 0)
@@ -668,6 +667,8 @@ The remaining commandments are hard to understand, and the comments explaining t
 
 &quot;That&#39;s correct! I&#39;m so glad you&#39;ve been paying attention in class.&quot;
 
+LEETCODE +4
+(set: $leetcode to $leetcode + 4)
 (set: $gd_correct to $gd_correct + 1)
 (set: $histIndex to (history:)&#39;s length - 1)
 (link-goto: &quot;I&#39;ll be a game developer yet!&quot;, (history:)&#39;s ($histIndex))</tw-passagedata><tw-passagedata pid="29" name="incorrect" tags="campus" position="1116,846" size="100,100">Dr. Winterville&#39;s eyes snap shut and his neck bulges out. He stays like this for three whole minutes before sighing loudly, taking off his glasses, and rubbing the bridge of his nose.
@@ -692,12 +693,13 @@ Who will you reach out to?
 [[Reach out to Chad-&gt;chad helps]]
 [[Reach out to Dr. Disrespect-&gt;dd helps]]
 [[Reach out to Billy-&gt;billy &quot;helps&quot;]]
-if(:$inv contains &quot;twine&quot;)[
+(if:$inv contains &quot;twine&quot;)[
 [[Make use of the twine-&gt;twine ending]]
 ]
+[[Pull yourself out-&gt;ending3]]
 [[Leap into the pit-&gt;ending unknown]]</tw-passagedata><tw-passagedata pid="32" name="winterville helps" tags="campus" position="1601,1452" size="100,100">You call to Dr. Winterville who is standing nearby.
 &lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
-(if: $gamedev_attendance&#39;s length &gt;= 3)[
+(if: $gd_attendance&#39;s length &gt;= 3)[
 &quot;Anything for a student of mine!&quot; Dr. Winterville bellows as he grabs your hand and hoists you back onto land.
 [[All&#39;s well that ends well!-&gt;ending3]]
 ]
@@ -828,7 +830,7 @@ But how could you not reminisce about Chad? He became everything you ever wanted
 [[What about Dr. Winterville?-&gt;winterville ending]]</tw-passagedata><tw-passagedata pid="45" name="surface ending" tags="campus" position="1650,1749" size="100,100">Life comes and goes, and you finish your four years without incident at Cal Poly Pomona. 
 
 (unless: (history:) contains &quot;slo ending&quot;)[
-The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.
+The big hole that used to be the CLA building is paved over with concrete and turned into more faculty parking. The incident itself is passed over with very little notice, and the only people who seem to remember are those who were with you that very night.]
 (else:)[
 You&#39;re lauded as a hero on campus for moving the fault underneath your sister school. They&#39;re not too pleased about it but it&#39;s a &quot;every polytechnic for themselves&quot; world out there.
 ]
@@ -841,7 +843,7 @@ Dr. Winterville who? You never went to class. Which consequently explains why yo
 &lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 Dr. Winterville&#39;s class, those were the days. You managed to do well enough in that class to graduate, which led to your employment at a reputable software company. It pays to go to school! 
 ]
-(else-if: $gd_correct is 5)[
+(else-if: $gd_correct &gt;= 5)[
 &lt;img src=&quot;https://raw.githubusercontent.com/hlin91/CPP_Dating_Sim/master/chars/adrian.png&quot; class=character&gt;
 That&#39;s right! Dr. Winterville! You were supposed to meet up with him today. You just call him by his first name, Adrian, now. You&#39;re partners at CD Project Green, the game development company you co-founded together. After seeing how well you did in Game Development class, he took you under his wing and into the world of professional game development. 
 
